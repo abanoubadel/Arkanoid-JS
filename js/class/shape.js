@@ -17,6 +17,19 @@ Shape.prototype.getIntoContainer =function(container)
 	this.div = container.appendChild(this.div);
 }
 
+Shape.prototype.getCenter = function(){
+	return [this.x+this.width/2,this.y+this.height/2];
+}
+
+Shape.prototype.getWidth = function(){
+	return this.width;
+}
+
+Shape.prototype.getHeight = function(){
+	return this.height;
+}
+
+
 
 Shape.prototype.getElement = function(){
 	return this.div;
@@ -75,8 +88,13 @@ Shape.prototype.getHeight = function()
 };
 
 
+
+
 var MovingShape = function(x,y,width,height,id,addedClass){
 	Shape.call(this,x,y,width,height,id,addedClass);
+	this.velocityX = 0;
+	this.velocityY = 0;
+
 }
 MovingShape.prototype = Object.create(Shape.prototype);
 MovingShape.prototype.constructor = MovingShape;
@@ -135,10 +153,12 @@ var Swing = function(x,y)
 Swing.prototype = Object.create(MovingShape.prototype);
 Swing.prototype.constructor = Swing;
 
-Swing.move = function (x) {
+Swing.prototype.move = function (x) {
 	// body...
-	Shape.prototype.move.call(this,x,0);
+	MovingShape.prototype.move.call(this,x,0);
 } 
+
+
 
 
 
