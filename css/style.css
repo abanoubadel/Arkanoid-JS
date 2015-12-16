@@ -1,0 +1,35 @@
+.position{
+	position: absolute;
+}
+#game{
+	position: relative;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+}
+#levelShape{
+	position: relative;
+	margin: 0 auto;
+}
+.block{
+	background-image: url(../images/arcanoid_beveled.png);
+	width: 85px;
+	height: 40px;
+}
+.violet{
+	background-position: 0px 591px;
+}
+.orange{
+	background-position: 660px 591px;
+}
+.blue{
+	background-position: 510px 591px;
+}
+.red{
+	background-position: 365px 591px;
+}
+.yellow{
+	background-position: 225px 591px;
+}
+.green{
+	background-position: 85px 591px;
+}
