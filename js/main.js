@@ -9,70 +9,85 @@
 											Javascript Project
 
 *******************************************************************************/
-
-var Menu = function(){
-	this.items = ["Start", "Exit"];
-	this.html = new String();
-	this.generateHTML = function(){
-		this.html += '<ul>';
-		for (var i = 0; i < this.items.length; i++) {
-			this.html += '<li>' + this.items[i] + '</li>';
-		};
-		this.html += '</ul>';
-		return this.html;
-	};
+var Window = function() {
+    this.id = 'game';
+    this.width = Config.Window.width;
+    this.height = Config.Window.height;
+    this.html = document.createElement('div');
+    this.html.id = this.id;
+    this.html.style.width = this.width + "px";
+    this.html.style.height = this.height + "px";
+    document.body.insertBefore(this.html, document.body.childNodes[0]);
 };
 
-var Layout = function(){
-	var id = "game";
-	var game = document.getElementById(id);
-
-	this.clear = function(){
-		game.innerHTML = '';
-	};
-
-	this.append = function(element) {
-		game.innerHTML += element;
-	};
+var Menu = function() {
+    this.items = ["Start", "Exit"];
+    this.html = new String();
+    this.generateHTML = function() {
+        this.html += '<ul>';
+        for (var i = 0; i < this.items.length; i++) {
+            this.html += '<li>' + this.items[i] + '</li>';
+        };
+        this.html += '</ul>';
+        return this.html;
+    };
 };
 
-var Level = function(){
-	this.id;
-	this.score;
-	this.time;
-	this.difficulty;
-	this.shape;
+var Layout = function() {
+    var id = "game";
+    var game = document.getElementById(id);
 
-	this.prototype.draw = function() {
-		switch(shape){
-			case 'rect':
-				{
-					for (var i = 0; i < .length; i++) {
-						[i]
-					};
-				}
-				break;
-		}	
-	};
+    this.clear = function() {
+        game.innerHTML = '';
+    };
+
+    this.append = function(element) {
+        game.appendChild(element);
+    };
 };
 
-var Window = function(){
-	this.id = 'game';
-	this.width = 400;
-	this.height = 800;
-	this.html = document.createElement('div');
-	this.html.id = this.id;
-	this.html.style.width = this.width;
-	this.html.style.height = this.height;
+var Level = function() {
+    this.id = 'levelShape';
+    this.score;
+    this.time;
+    this.difficulty;
+    this.shape = 'rect';
+    this.html = document.createElement('div');
+    this.html.id = this.id;
+
+    this.draw = function() {
+        switch (this.shape) {
+            case 'rect':
+                {
+                    var rows = Math.floor(Config.Level.height / Config.Block.height);
+                    var cols = Math.floor(Config.Window.width / Config.Block.width);
+                    // console.log(rows);
+                    this.html.style.width = cols * Config.Block.width + "px";
+                    this.html.style.height = rows * Config.Block.height + "px";
+
+                    for (var i = 0; i < rows; i++) {
+                        for (var j = 0; j < cols; j++) {
+                            var block = new Block('block-' + i + j, j * Config.Block.width, i * Config.Block.height, 'block');
+                            block.setRandomColor();
+                            block.getIntoContainer(this.html);
+                        };
+                    };
+                }
+                break;
+        }
+        return this.html;
+    };
 };
 
-var Game = function(){
-	// var menu = new Menu();
-	var window = new Window();
-	var layout = new Layout();
-	// layout.append( menu.generateHTML() );
+var Game = function() {
+    // var menu = new Menu();
+    var window = new Window();
+    var level = new Level();
+    var layout = new Layout();
+    // layout.append( menu.generateHTML() );
+    layout.append(level.draw());
 };
 
-var main = function(){
-	var game = new Game();
+var main = function() {
+    var game = new Game();
 }();
