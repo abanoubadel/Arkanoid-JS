@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Arkanoid-JS</title>
+</head>
+<body>
+	<div id="game"></div>
+	<script src="js/main.js"></script>
+	<script src="js/class/shape.js"></script>
+</body>
+</html>
