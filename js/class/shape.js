@@ -22,12 +22,6 @@ Shape.prototype.getElement = function(){
 	return this.div;
 }
 
-Shape.prototype.move = function(x,y)
-{
-	this.x+= x;
-	this.y += y;
-	this.setPlace();	
-}
 Shape.prototype.setPlace = function () {
 		// body...
 		if(this.div)
@@ -62,6 +56,27 @@ Shape.prototype.generateHtml = function() {
 
 
 
+var MovingShape = function(x,y,width,height,id,addedClass){
+	Shape.call(this,x,y,width,height,id,addedClass);
+}
+MovingShape.prototype = Object.create(Shape.prototype);
+MovingShape.prototype.constructor = MovingShape;
+
+MovingShape.prototype.move = function(x,y)
+{
+	this.x+= x;
+	this.y += y;
+	this.setPlace();	
+}
+
+
+
+
+
+
+
+
+
 var Rod = function(id,isVertical,x,y,length){
 	var height;
 	var width;
@@ -93,7 +108,7 @@ var Swing = function(x,y)
 	this.setColor("black");
 } 
 
-Swing.prototype = Object.create(Shape.prototype);
+Swing.prototype = Object.create(MovingShape.prototype);
 Swing.prototype.constructor = Swing;
 
 
@@ -103,13 +118,13 @@ Swing.prototype.constructor = Swing;
 
 
 
-
 function main(){
-	//var k = new Shape(10,10,10,10,"test","t");
-	//k.getIntoContainer(document.body);
-	//console.log(k.div);
-	s = new Swing(10,10);
-	//s.getIntoContainer(document.body);
+	var s = new Swing(10,10);
+	var m = new MovingShape(10,12,100,100,"id","addedClass");
+	console.log(m.div);
+	//m.getIntoContainer(document.body);
+	//console.log(s instanceof Rod) 
+
 	//var r = new Rod("r1",true,90,90,100);
 
 };
