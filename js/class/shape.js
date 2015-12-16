@@ -45,7 +45,7 @@ Shape.prototype.setColor = function(color)
 
 Shape.prototype.generateHtml = function() {
 		this.div = document.createElement("div");
-		//this.div.classList.add(this.initialClass);
+		this.div.classList.add(this.initialClass);
 		this.addClass(this.initialClass);
 		this.addClass(this.addedClass);
 		this.div.id= this.id;
@@ -54,6 +54,25 @@ Shape.prototype.generateHtml = function() {
 		this.setPlace();
 };
 
+Shape.prototype.getX = function()
+{
+	return this.x;
+};
+
+Shape.prototype.getY = function()
+{
+	return this.y;
+};
+
+Shape.prototype.getWidth = function()
+{
+	return this.width;
+};
+
+Shape.prototype.getHeight = function()
+{
+	return this.height;
+};
 
 
 var MovingShape = function(x,y,width,height,id,addedClass){
@@ -67,6 +86,11 @@ MovingShape.prototype.move = function(x,y)
 	this.x+= x;
 	this.y += y;
 	this.setPlace();	
+}
+
+MovingShape.prototype.setX = function (x) {
+	// body...
+	this.move(x-this.getX(),0);
 }
 
 
@@ -106,11 +130,15 @@ var Swing = function(x,y)
 	//calling constructors
 	Shape.call(this,x,y,100,10,"swing","swing");
 	this.setColor("black");
-} 
+}
 
 Swing.prototype = Object.create(MovingShape.prototype);
 Swing.prototype.constructor = Swing;
 
+Swing.move = function (x) {
+	// body...
+	Shape.prototype.move.call(this,x,0);
+} 
 
 
 
@@ -118,7 +146,7 @@ Swing.prototype.constructor = Swing;
 
 
 
-function main(){
+/*function main(){
 	var s = new Swing(10,10);
 	var m = new MovingShape(10,12,100,100,"id","addedClass");
 	console.log(m.div);
@@ -129,3 +157,5 @@ function main(){
 
 };
 main();
+
+*/
