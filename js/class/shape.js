@@ -247,6 +247,8 @@ Rod.prototype.constructor = Rod;
 var Swing = function(x,y)
 {
 	//calling constructors
+	this.velocityX = 0;
+	this.velocityY = 0;
 	var length = 100;
 	var width = 30;
 	Shape.call(this,x,y,length,width,"swing","swing");
