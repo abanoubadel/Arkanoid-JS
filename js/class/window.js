@@ -1,5 +1,3 @@
-
-
 var Window = function() {
     this.id = 'game';
     this.width = Config.Window.width;

@@ -1,3 +1,14 @@
+var heart = "   ,.   :`  \n";
+heart    += "  @@@@;@@@@ \n";
+heart    += " #@@@@@@@@@ \n";
+heart    += " @@@'@@@@@@ \n";
+heart    += " ,@#.@@@@@@ \n";
+heart    += "   `@#@@@@+ \n";
+heart    += "  `@@ @,,,  \n";
+heart    += "   ,@+ @@   \n";
+heart    += "    ;@+@    \n";
+heart    += "     #@`      ";
+
 var Config = {
     Window: {
         id: 'name',
@@ -10,15 +21,15 @@ var Config = {
         levels: [{
             time: 5, // in mints
             difficulty: 0, //
-            shape: 'rect'
+            shape: heart,
         }, {
             time: 3, // in mints
             difficulty: 1, //
-            shape: 'rect'
+            shape: heart,
         }, {
             time: 1, // in mints
             difficulty: 2, //
-            shape: 'rect'
+            shape: heart,
         }],
         height: 200, //prefer to be 70% of window height
         width: 300

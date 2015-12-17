@@ -7,6 +7,6 @@ var Objects = function(){
 		};		
 	};
 	this.addSingleItem = function(item){
-		this.items.push(item);
+		items.items.push(item);
 	};
 };

@@ -1,8 +1,8 @@
 var Game = function() {
-    // var menu = new Menu();
     var window = new Window();
-    var level = new Level();
-    var layout = new Layout();
-    // layout.append( menu.generateHTML() );
-    layout.append(level.draw());
+    var objects = new Objects();
+    var level = new Level( objects );
+    var layout = new Layout( objects );
+    console.log( objects );
+    layout.draw();
 };
