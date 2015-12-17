@@ -54,6 +54,9 @@ MovingShape.prototype.checkCollisionDims = function(obj) {
     for (var i = 0; i < this.getDimSize(); i++) {
         collisionDim.push(-1 * Math.abs(center1[i] - center2[i]) + (dim1[i] + dim2[i]) / 2);
     };
+    
+
+
     var CollisionHappened = true;
 
     for (var i = 0; i < collisionDim.length; i++) {

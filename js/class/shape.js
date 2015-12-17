@@ -10,12 +10,17 @@ var Shape = function(x, y, width, height, id, addedClass) {
     this.addedClasses = [addedClass,initialClass];
 };
 
+
+
 //for regression
 
 /*Shape.prototype.addStyle = function(style, value) {
     this.div.style[style] = value;
 }*/
 
+Shape.prototype.getId = function() {
+    rteturn this.id;
+}
 
 Shape.prototype.getCenter = function() {
     return [this.x + this.width / 2, this.y + this.height / 2];
