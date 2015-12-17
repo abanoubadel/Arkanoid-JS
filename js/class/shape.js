@@ -4,65 +4,40 @@ var Shape = function(x, y, width, height, id, addedClass) {
     this.width = width;
     this.height = height;
     this.id = id;
-    this.initialClass = "position";
-    this.addedClass = addedClass;
-    this.generateHtml();
+
+   // this.initialClass = "position";
+    var initialClass = "position";
+    this.addedClasses = [addedClass,initialClass];
 };
 
-Shape.prototype.addStyle = function(style, value) {
-    this.div.style[style] = value;
-}
+//for regression
 
-Shape.prototype.getIntoContainer = function(container) {
-    this.div = container.appendChild(this.div);
-}
+/*Shape.prototype.addStyle = function(style, value) {
+    this.div.style[style] = value;
+}*/
+
 
 Shape.prototype.getCenter = function() {
     return [this.x + this.width / 2, this.y + this.height / 2];
 }
 
-Shape.prototype.getWidth = function() {
-    return this.width;
-}
 
-Shape.prototype.getHeight = function() {
-    return this.height;
-}
-
-Shape.prototype.getElement = function() {
-    return this.div;
-}
-
-Shape.prototype.setPlace = function() {
-    // body...
-    if (this.div) {
-        this.div.style.left = this.x + "px";
-        this.div.style.top = this.y + "px";
-    }
-}
 Shape.prototype.addClass = function(cls) {
 
-    this.div.classList.add(cls);
+    this.addedClasses.push(cls);
+
+}
+
+Shape.prototype.getClasses = function(cls) {
+
+    return this.addedClasses;
 
 }
 
 
 
-Shape.prototype.setColor = function(color) {
-    this.div.style.backgroundColor = color;
 
-};
 
-Shape.prototype.generateHtml = function() {
-    this.div = document.createElement("div");
-    this.div.classList.add(this.initialClass);
-    this.addClass(this.initialClass);
-    this.addClass(this.addedClass);
-    this.div.id = this.id;
-    this.div.style.width = this.width + "px";
-    this.div.style.height = this.height + "px";
-    this.setPlace();
-};
 
 Shape.prototype.getX = function() {
     return this.x;

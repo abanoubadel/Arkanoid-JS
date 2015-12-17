@@ -21,7 +21,6 @@ var Rod = function(id, isVertical, x, y, length) {
         width = length;
     }
     Shape.call(this, x, y, width, height, id, "rod");
-    this.setColor("black");
 
 }
 
