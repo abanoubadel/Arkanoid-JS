@@ -1,7 +1,7 @@
 var Block = function(id, x, y, classes, BGcolor) {
     Shape.call(this, x, y, Config.Block.width, Config.Block.height, id, classes, BGcolor);
     this.colors = ['violet', 'orange', 'blue', 'red', 'yellow', 'green'];
-    
+
 
     this.setColor = function(num) {
         this.addClass(this.colors[num]);
