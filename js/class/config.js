@@ -27,5 +27,9 @@ var Config = {
         width: 60,
         height: 25,
         margin: 5,
+    },
+    Swing:{
+        width: 162,
+        height: 25,
     }
 };

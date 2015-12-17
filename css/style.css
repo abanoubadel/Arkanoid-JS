@@ -32,3 +32,7 @@
 .green{
 	background-position: 84px 590px;
 }
+.swing{
+	background-image: url(../images/arcanoid_beveled.png);
+	background-position: 174px 95px;
+}

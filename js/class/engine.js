@@ -107,24 +107,24 @@ Physics.prototype.move= function(objects)
 
 
 
-function main(){
-	var s = new Swing(20,20);
-	var b = new Ball(70,70,-10,-10);
-	s.getIntoContainer(document.body);
-	b.getIntoContainer(document.body);
-	var r = new Rod("r1",true,0,0,1000);
-	var r2 = new Rod("r2",false,100,250,1000);
-	r.getIntoContainer(document.body);
-	r2.getIntoContainer(document.body);
+// function main(){
+// 	var s = new Swing(20,20);
+// 	var b = new Ball(70,70,-10,-10);
+// 	s.getIntoContainer(document.body);
+// 	b.getIntoContainer(document.body);
+// 	var r = new Rod("r1",true,0,0,1000);
+// 	var r2 = new Rod("r2",false,100,250,1000);
+// 	r.getIntoContainer(document.body);
+// 	r2.getIntoContainer(document.body);
 	
-	var  e = new Engine(s,80,700);
-	var p = new Physics();
-	p.addObject(s);
-	p.addObject(b);
-	p.addObject(r);
-	p.addObject(r2);
-	setInterval(p.move,100,p.objects);
+// 	var  e = new Engine(s,80,700);
+// 	var p = new Physics();
+// 	p.addObject(s);
+// 	p.addObject(b);
+// 	p.addObject(r);
+// 	p.addObject(r2);
+// 	setInterval(p.move,100,p.objects);
 
-}
-main();
+// }
+// main();
 

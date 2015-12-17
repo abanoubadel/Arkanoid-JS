@@ -227,10 +227,9 @@ var Swing = function(x, y) {
     //calling constructors
     this.velocityX = 0;
     this.velocityY = 0;
-    var length = 100;
-    var width = 30;
-    Shape.call(this, x, y, length, width, "swing", "swing");
-    this.setColor("black");
+    var width = Config.Swing.width;
+    var height = Config.Swing.height
+    Shape.call(this, x, y, width, height, "swing", "swing");
 };
 
 Swing.prototype = Object.create(MovingShape.prototype);

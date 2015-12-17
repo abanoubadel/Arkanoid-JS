@@ -48,6 +48,9 @@ var Layout = function() {
 
 var Level = function() {
     this.current = Config.Level.start;
+    this.rows = 0;
+    this.cols = 0;
+    this.objectsArray = [];
     this.html = document.createElement('div');
     this.html.id = Config.Level.id;
 
@@ -63,15 +66,13 @@ var Level = function() {
     this.prev = function() {
         this.current--;
     };
-    this.draw = function() {
+    this.generate = function() {
         this.shape = level1.split("\n");
-        var rows = this.shape.length;
-        var cols = this.shape[0].length;
-        this.html.style.width = cols * Config.Block.width + "px";
-        this.html.style.height = rows * Config.Block.height + "px";
+        this.rows = this.shape.length;
+        this.cols = this.shape[0].length;
 
-        for (var i = 0; i < rows; i++) {
-            for (var j = 0; j < cols; j++) {
+        for (var i = 0; i < this.rows; i++) {
+            for (var j = 0; j < this.cols; j++) {
                 if (this.shape[i][j] != ' ') {
                     var block = new Block(
                         'block-' + (i + j), // id
@@ -80,14 +81,21 @@ var Level = function() {
                         'block' // class
                     );
                     block.setRandomColor();
-                    block.getIntoContainer(this.html);
+                    this.objectsArray.push(block);
                 }
             }
         };
-
+    };
+    this.draw = function() {
+        this.html.style.width = this.cols * Config.Block.width + "px";
+        this.html.style.height = this.rows * Config.Block.height + "px";
+        for (var i = 0; i < this.objectsArray.length; i++) {
+            this.objectsArray[i].getIntoContainer(this.html);
+        };
         return this.html;
     };
     this.loadConfig();
+    this.generate();
 };
 
 var Game = function() {
@@ -95,8 +103,19 @@ var Game = function() {
     var window = new Window();
     var level = new Level();
     var layout = new Layout();
-    // layout.append( menu.generateHTML() );
+    var objects = new Objects();
+
+    var swing = new Swing((Config.Window.width / 2) - 50, Config.Window.height - 30);
+    var ball = new Ball(70, 70, -10, -10);
+    var engine = new Engine(swing, 0, Config.Window.width);
+
+    objects.setItems(level.objectsArray);
+    objects.addSingleItem(swing);
+    objects.addSingleItem(ball);
+    
     layout.append(level.draw());
+    layout.append(swing.div);
+    layout.append(ball.div);
 };
 
 var main = function() {
