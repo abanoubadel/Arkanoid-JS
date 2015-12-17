@@ -19,7 +19,7 @@ var Shape = function(x, y, width, height, id, addedClass) {
 }*/
 
 Shape.prototype.getId = function() {
-    rteturn this.id;
+    return this.id;
 }
 
 Shape.prototype.getCenter = function() {
