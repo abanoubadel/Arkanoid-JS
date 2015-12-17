@@ -13,7 +13,6 @@ Swing.prototype.constructor = Swing;
 
 
 Swing.prototype.move = function(x) {
-    // body...
     MovingShape.prototype.move.call(this, x, 0);
 };
 

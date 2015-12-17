@@ -13,7 +13,6 @@ Ball.prototype.constructor = Ball;
 
 Ball.prototype.checkCollision = function(obj) {
     var coll = MovingShape.prototype.checkCollision.call(this, obj);
-    //Ball.move(coll[0],coll[1]);//to avoid object around objects
     return coll;
 
 }
