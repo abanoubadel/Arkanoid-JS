@@ -12,24 +12,23 @@
 }
 .block{
 	background-image: url(../images/arcanoid_beveled.png);
-	width: 85px;
-	height: 40px;
+	transform: scale(0.75, 0.75);
 }
 .violet{
-	background-position: 0px 591px;
+	background-position: 788px 590px;
 }
 .orange{
-	background-position: 660px 591px;
+	background-position: 657px 590px;
 }
 .blue{
-	background-position: 510px 591px;
+	background-position: 512px 590px;
 }
 .red{
-	background-position: 365px 591px;
+	background-position: 365px 590px;
 }
 .yellow{
-	background-position: 225px 591px;
+	background-position: 226px 590px;
 }
 .green{
-	background-position: 85px 591px;
+	background-position: 84px 590px;
 }
