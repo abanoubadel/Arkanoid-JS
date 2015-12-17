@@ -61,17 +61,18 @@ Physics.prototype.addObject = function(obj) {
 };
 
 
-Physics.prototype.move= function()
+Physics.prototype.move= function(objects)
 {
-	for(var movingObject = 0 ; movingObject<this.objects.length ; movingObject++ )
+
+	for(var movingObject = 0 ; movingObject<objects.length ; movingObject++ )
 	{
-		var obj = this.objects[movingObject];
+		var obj = objects[movingObject];
 		if(obj instanceof MovingShape)
 		{
 			var collArray = [0,0];
-			for(var collidingOBject = 0; collidingOBject<this.objects.length ; collidingOBject++)
+			for(var collidingOBject = 0; collidingOBject<objects.length ; collidingOBject++)
 			{
-				var obj2 = this.objects[collidingOBject];
+				var obj2 = objects[collidingOBject];
 				var center1 = obj2.getCenter();
 				var center2 = obj.getCenter();
 				if(obj != obj2)
@@ -107,16 +108,22 @@ Physics.prototype.move= function()
 
 
 function main(){
-	var s = new Swing(10,10);
-	var b = new Ball(10,10,10,10);
+	var s = new Swing(20,20);
+	var b = new Ball(70,70,-10,-10);
 	s.getIntoContainer(document.body);
 	b.getIntoContainer(document.body);
+	var r = new Rod("r1",true,0,0,1000);
+	var r2 = new Rod("r2",false,100,250,1000);
+	r.getIntoContainer(document.body);
+	r2.getIntoContainer(document.body);
+	
 	var  e = new Engine(s,80,700);
-
 	var p = new Physics();
 	p.addObject(s);
-	p.addObject(b)
-	p.move();
+	p.addObject(b);
+	p.addObject(r);
+	p.addObject(r2);
+	setInterval(p.move,100,p.objects);
 
 }
 main();

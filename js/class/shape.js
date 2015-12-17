@@ -126,7 +126,7 @@ MovingShape.prototype.revertVelocityX = function(){
 	this.velocityX *= -1; 
 }
 MovingShape.prototype.revertVelocityY = function(){
-	this.velocityX *= -1; 
+	this.velocityY *= -1; 
 }
 
 
@@ -144,7 +144,8 @@ MovingShape.prototype.revertVelocity = function(carr){
 
 
 MovingShape.prototype.inertia = function(){
-	this.move(this.velocityX,this.velocityY);	
+	this.move(this.velocityX,this.velocityY);
+	//MovingShape.prototype.move.call(this,this.velocityX,this.velocityY);	
 }
 
 MovingShape.prototype.setX = function (x) {
@@ -158,9 +159,25 @@ MovingShape.prototype.checkCollisionDims = function(obj){
 	var dim2 = obj.getDims();
 	var collisionDim = [];
 	for (var i = 0; i < this.getDimSize(); i++) {
-		collisionDim.push( -1*(center1[i]-center2[i]) + (dim1[i]+dim2[i])/2 );
+		collisionDim.push( -1*Math.abs(center1[i]-center2[i]) + (dim1[i]+dim2[i])/2 );
 	};
+	var CollisionHappened = true;
+
+	for (var i = 0; i < collisionDim.length; i++) {
+		if(collisionDim[i]<0)
+		{
+			CollisionHappened = false;
+		}
+	};
+	if(!CollisionHappened)
+	{
+		for (var i = 0; i < collisionDim.length; i++) {
+			collisionDim[i]=0;
+		};
+	}
+
 	return collisionDim;
+
 
 }
 
@@ -203,31 +220,36 @@ MovingShape.prototype.checkCollision = function(obj)
 var Rod = function(id,isVertical,x,y,length){
 	var height;
 	var width;
-
+	var thin = 10;
 	if(isVertical)
 	{
 		height = length;
-		width = 0;
+		width = thin;
 	}
 	else
 	{
-		height = 0;
+		height = thin;
 		width = length;
 	}
-	Shape.call(this,x,y,width,height,id,"");
-
+	Shape.call(this,x,y,width,height,id,"rod");
+	this.setColor("black"); 
 
 }
+
+
 
 Rod.prototype = Object.create(Shape.prototype);
 Rod.prototype.constructor = Rod;
 
 
 
+
 var Swing = function(x,y)
 {
 	//calling constructors
-	Shape.call(this,x,y,100,10,"swing","swing");
+	var length = 100;
+	var width = 30;
+	Shape.call(this,x,y,length,width,"swing","swing");
 	this.setColor("black");
 };
 
@@ -251,8 +273,18 @@ var Ball = function (x,y,vx,vy) {
 	this.velocityY = vy;
 	this.setColor("black");
 }
+
 Ball.prototype = Object.create(MovingShape.prototype);
 Ball.prototype.constructor = Ball;
+
+Ball.prototype.checkCollision = function(obj)
+{
+	var coll = 	MovingShape.prototype.checkCollision.call(this,obj);
+	//Ball.move(coll[0],coll[1]);//to avoid object around objects
+	return coll;
+	
+}
+
 
 
 
