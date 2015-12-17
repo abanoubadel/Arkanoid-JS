@@ -51,7 +51,7 @@ var Engine = function(swing, min, max) {
 
 
 
- function main(){
+/* function main(){
  	var s = new Swing(20,20);
  	var b = new Ball(70,70,-10,-10);
  	s.getIntoContainer(document.body);
@@ -71,3 +71,4 @@ var Engine = function(swing, min, max) {
 
  }
  main();
+*/

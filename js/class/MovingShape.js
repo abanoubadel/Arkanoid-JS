@@ -14,7 +14,7 @@ MovingShape.prototype.constructor = MovingShape;
 MovingShape.prototype.move = function(x, y) {
     this.x += x;
     this.y += y;
-    this.setPlace();
+    //this.setPlace();
 }
 
 MovingShape.prototype.revertVelocityX = function() {

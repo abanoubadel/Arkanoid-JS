@@ -5,7 +5,6 @@ var Ball = function(x, y, vx, vy) {
     Shape.call(this, x, y, width, height, "Ball", "Ball");
     this.velocityX = vx;
     this.velocityY = vy;
-    this.setColor("black");
 }
 
 Ball.prototype = Object.create(MovingShape.prototype);

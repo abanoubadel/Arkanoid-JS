@@ -5,7 +5,6 @@ var Swing = function(x, y) {
     var length = 100;
     var width = 30;
     Shape.call(this, x, y, length, width, "swing", "swing");
-    this.setColor("black");
 };
 
 Swing.prototype = Object.create(MovingShape.prototype);

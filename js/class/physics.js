@@ -1,16 +1,12 @@
-var Physics = function()
+var Physics = function(objs)
 {
-	this.objects = [];
+	this.objects = objs;
 }
 
 
 
 
 
-Physics.prototype.addObject = function(obj) {
-	// body...
-	this.objects.push(obj);
-};
 
 
 Physics.prototype.move= function(objects)
@@ -25,8 +21,6 @@ Physics.prototype.move= function(objects)
 			for(var collidingOBject = 0; collidingOBject<objects.length ; collidingOBject++)
 			{
 				var obj2 = objects[collidingOBject];
-				var center1 = obj2.getCenter();
-				var center2 = obj.getCenter();
 				if(obj != obj2)
 				{
 					var colls = obj.checkCollision(obj2);
