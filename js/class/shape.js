@@ -15,25 +15,25 @@ var Shape = function (x,y,width,height,id,addedClass) {
 Shape.prototype.getIntoContainer =function(container)
 {
 	this.div = container.appendChild(this.div);
-}
+};
 
 Shape.prototype.getCenter = function(){
 	return [this.x+this.width/2,this.y+this.height/2];
-}
+};
 
 Shape.prototype.getWidth = function(){
 	return this.width;
-}
+};
 
 Shape.prototype.getHeight = function(){
 	return this.height;
-}
+};
 
 
 
 Shape.prototype.getElement = function(){
 	return this.div;
-}
+};
 
 Shape.prototype.setPlace = function () {
 		// body...
@@ -42,19 +42,19 @@ Shape.prototype.setPlace = function () {
 			this.div.style.left = this.x + "px";
 			this.div.style.bottom = this.y + "px";
 		}
-}
+};
 Shape.prototype.addClass = function (cls) {
 		
 		this.div.classList.add(cls);
 		
-}
+};
 
 
 Shape.prototype.setColor = function(color)
 {
 	this.div.style.backgroundColor = color;
 
-}
+};
 
 Shape.prototype.generateHtml = function() {
 		this.div = document.createElement("div");
@@ -87,6 +87,18 @@ Shape.prototype.getHeight = function()
 	return this.height;
 };
 
+Shape.prototype.getDims = function()
+{
+	return [this.width,this.height];
+};
+
+Shape.prototype.getDimSize = function()
+{
+	return 2;
+};
+
+
+
 
 
 
@@ -96,6 +108,10 @@ var MovingShape = function(x,y,width,height,id,addedClass){
 	this.velocityY = 0;
 
 }
+
+
+
+
 MovingShape.prototype = Object.create(Shape.prototype);
 MovingShape.prototype.constructor = MovingShape;
 
@@ -106,12 +122,77 @@ MovingShape.prototype.move = function(x,y)
 	this.setPlace();	
 }
 
-MovingShape.prototype.setX = function (x) {
-	// body...
-	this.move(x-this.getX(),0);
+MovingShape.prototype.revertVelocityX = function(){
+	this.velocityX *= -1; 
+}
+MovingShape.prototype.revertVelocityY = function(){
+	this.velocityX *= -1; 
 }
 
 
+MovingShape.prototype.revertVelocity = function(carr){
+	if(carr[0] > 0)
+	{
+		this.revertVelocityX();
+	}
+	if (carr[1]>0) 
+	{
+		this.revertVelocityY();
+
+	}; 
+}
+
+
+MovingShape.prototype.inertia = function(){
+	this.move(this.velocityX,this.velocityY);	
+}
+
+MovingShape.prototype.setX = function (x) {
+	this.move(x-this.getX(),0);
+}
+
+MovingShape.prototype.checkCollisionDims = function(obj){
+	var center1 = this.getCenter();
+	var center2 = obj.getCenter();
+	var dim1 = this.getDims();
+	var dim2 = obj.getDims();
+	var collisionDim = [];
+	for (var i = 0; i < this.getDimSize(); i++) {
+		collisionDim.push( -1*(center1[i]-center2[i]) + (dim1[i]+dim2[i])/2 );
+	};
+	return collisionDim;
+
+}
+
+
+MovingShape.prototype.checkCollision = function(obj)
+{
+	var center2 = obj.getCenter();
+	var center1 = this.getCenter();
+	
+	if(this == obj)
+	{
+		return [0,0];
+	}
+	var collArr = this.checkCollisionDims(obj);
+	if(collArr[1]>=collArr[0])
+	{
+		collArr[1] = 0;
+
+	}
+	else
+	{
+		collArr[0] = 0;
+	}
+	for (var i = 0; i < collArr.length; i++) {
+		if(collArr[i] < 0)
+		{
+			collArr[i] = 0;
+		}
+	};
+	return collArr;
+
+}
 
 
 
@@ -148,7 +229,7 @@ var Swing = function(x,y)
 	//calling constructors
 	Shape.call(this,x,y,100,10,"swing","swing");
 	this.setColor("black");
-}
+};
 
 Swing.prototype = Object.create(MovingShape.prototype);
 Swing.prototype.constructor = Swing;
@@ -156,10 +237,22 @@ Swing.prototype.constructor = Swing;
 Swing.prototype.move = function (x) {
 	// body...
 	MovingShape.prototype.move.call(this,x,0);
-} 
+}; 
 
 
 
+
+var Ball = function (x,y,vx,vy) {
+	// body...
+	var width = 25;
+	var height = width;
+	Shape.call(this,x,y,width,height,"Ball","Ball");
+	this.velocityX = vx;
+	this.velocityY = vy;
+	this.setColor("black");
+}
+Ball.prototype = Object.create(MovingShape.prototype);
+Ball.prototype.constructor = Ball;
 
 
 

@@ -68,18 +68,27 @@ Physics.prototype.move= function()
 		var obj = this.objects[movingObject];
 		if(obj instanceof MovingShape)
 		{
-
+			var collArray = [0,0];
 			for(var collidingOBject = 0; collidingOBject<this.objects.length ; collidingOBject++)
 			{
 				var obj2 = this.objects[collidingOBject];
 				var center1 = obj2.getCenter();
 				var center2 = obj.getCenter();
-				if( Math.abs(center1[0]-center2[0]) <= (obj.getWidth()+obj2.getWidth())/2 && Math.abs(center1[1]-center2[1]) <= (obj.getHeight()+obj2.getHeight())/2 )
+				if(obj != obj2)
 				{
-					console.log(obj1 +" hit "+obj2);
+					var colls = obj.checkCollision(obj2);
+					collArray[0] += colls[0];
+					collArray[1] += colls[1];
 				}
 
+
+
+
 			}
+
+			obj.revertVelocity(collArray);
+			obj.inertia();
+
 		}	
 	}
 }
@@ -99,10 +108,15 @@ Physics.prototype.move= function()
 
 function main(){
 	var s = new Swing(10,10);
+	var b = new Ball(10,10,10,10);
 	s.getIntoContainer(document.body);
+	b.getIntoContainer(document.body);
 	var  e = new Engine(s,80,700);
 
-	var p = new physics();
+	var p = new Physics();
+	p.addObject(s);
+	p.addObject(b)
+	p.move();
 
 }
 main();
