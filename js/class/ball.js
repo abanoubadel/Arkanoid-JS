@@ -1,5 +1,8 @@
 var Ball = function(x, y, vx, vy) {
     // body...
+    this.accX = 1.5;
+    this.accY = 1.2;
+
     var width = 25;
     var height = width;
     Shape.call(this, x, y, width, height, "Ball", "Ball");

@@ -1,15 +1,24 @@
 var MovingShape = function(x, y, width, height, id, addedClass) {
-    Shape.call(this, x, y, width, height, id, addedClass);
+   Shape.call(this, x, y, width, height, id, addedClass);
+ 
     this.velocityX = 0;
     this.velocityY = 0;
+    this.accX = 1.5;
+    this.accY =1.2;
 
 }
 
 
 
 
+
 MovingShape.prototype = Object.create(Shape.prototype);
 MovingShape.prototype.constructor = MovingShape;
+
+MovingShape.prototype.getAcceleration =function(){
+    console.log([this.accX,this.accY]);
+    return [this.accX,this.accY];
+}
 
 MovingShape.prototype.move = function(x, y) {
     this.x += x;
@@ -18,11 +27,15 @@ MovingShape.prototype.move = function(x, y) {
 }
 
 MovingShape.prototype.revertVelocityX = function() {
-    this.velocityX *= -1;
+    this.velocityX *= -1*this.getAcceleration()[1];
+    this.accX = (this.accX-1)*0.7+1;
+
 };
 
 MovingShape.prototype.revertVelocityY = function() {
-    this.velocityY *= -1;
+    this.velocityY *= -1*this.getAcceleration()[1];
+
+    this.accY = (this.accY-1)*0.7+1;
 };
 
 MovingShape.prototype.stop = function() {
@@ -38,6 +51,7 @@ MovingShape.prototype.getVelocityDir = function(){
 
 
 MovingShape.prototype.revertVelocity = function(carr) {
+    var vector1 = Math.sqrt(this.velocityX*this.velocityX + this.velocityY*this.velocityY);
     if (carr[0] > 0) {
         this.revertVelocityX();
     }
@@ -45,6 +59,12 @@ MovingShape.prototype.revertVelocity = function(carr) {
         this.revertVelocityY();
 
     };
+    var vector2 = Math.sqrt(this.velocityX*this.velocityX + this.velocityY*this.velocityY);
+    if(vector2 != 0)
+    {
+        this.velocityX  = Math.ceil((this.velocityX*vector1)/vector2);
+        this.velocityY  = Math.ceil((this.velocityY*vector1)/vector2);
+    }
 }
 
 
