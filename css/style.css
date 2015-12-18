@@ -36,3 +36,23 @@
 	background-image: url(../images/arcanoid_beveled.png);
 	background-position: 174px 95px;
 }
+
+.Ball{
+	border-radius: 100%;
+	background-color: black;	 
+}
+.rod{
+	background-color: black;
+	display: none;
+}
+
+.hidden
+{
+	display: none;
+}
+.anhillated
+{
+	background-image: none;
+	background-color: red !important;
+}
+

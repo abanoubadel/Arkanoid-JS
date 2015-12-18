@@ -12,6 +12,17 @@ var Block = function(id, x, y, classes, BGcolor) {
         this.addClass(this.colors[num]);
     };
 };
-
 Block.prototype = Object.create(Shape.prototype);
 Block.prototype.constructor = Block;
+
+Block.prototype.checkCollision = function(obj) {
+	var result = Shape.prototype.checkCollision.call(this,obj);
+	if(result[0]> 0 || result[1]> 0 )
+	{
+		this.addClass("anhillated");
+		this.destroy();
+	}
+	return result; 
+}
+//MovingShape.prototype.move.call
+

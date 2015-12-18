@@ -7,9 +7,38 @@ var Physics = function(objs)
 
 
 
+Physics.prototype.move= function()
+{
+	for(var movingObject = 0 ; movingObject<this.objects.length ; movingObject++ )
+	{
+		var obj = this.objects[movingObject];
+		if(obj instanceof MovingShape)
+		{
+			var collArray = [0,0];
+			for(var collidingOBject = 0; collidingOBject<this.objects.length ; collidingOBject++)
+			{
+				var obj2 = this.objects[collidingOBject];
+				if(obj != obj2)
+				{
+					//var colls = obj.checkCollision(obj2);
+					var colls = obj2.checkCollision(obj);
+					collArray[0] += colls[0];
+					collArray[1] += colls[1];
+				}
 
 
-Physics.prototype.move= function(objects)
+
+
+			}
+
+			obj.revertVelocity(collArray);
+			obj.inertia();
+
+		}	
+	}
+}
+
+/*Physics.prototype.move= function(objects)
 {
 
 	for(var movingObject = 0 ; movingObject<objects.length ; movingObject++ )
@@ -38,4 +67,4 @@ Physics.prototype.move= function(objects)
 
 		}	
 	}
-}
+}*/

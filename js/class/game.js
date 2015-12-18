@@ -1,33 +1,52 @@
 var Game = function() {
-    //create game window
     var window = new Window();
-    //create game object
     var objects = new Objects();
-    //create swing
-    var swing = new Swing(
-        (Config.Window.width / 2) - 50, // x axis
-        Config.Window.height - 30 // y axis
-    );
-    //create ball
-    var ball = new Ball(70, 70, -10, -10);
-    //add swing to game object
-    objects.addSingleItem(swing);
-    //add ball to game object
-    objects.addSingleItem(ball);
-    //
-    var engine = new Engine(
-        swing, 
-        0, // minimum swing range
-        Config.Window.width //maximum swing range
-    );
-    //create level (default first level) you can change it from Config
-    var level = new Level(objects);
-    //create layout
-    var layout = new Layout(objects);
-    //draw layout
-    layout.draw();
+    var swing = new Swing((Config.Window.width / 2) - 50, Config.Window.height - 50);
+    var ball = new Ball((Config.Window.width / 2) - 20, Config.Window.height - 90, 10, 10);
+    
+    
+    this.createWalls = function(){
+        var margin = 10;
+        var winMargin = 0;
+        var walls = {};
+        walls["rRod"] = new Rod("rightWall", true, -winMargin, -margin/2, Config.Window.height+margin);
+        walls["lRod"] = new Rod("LeftWall", true, Config.Window.width+Config.Rod.dim+winMargin, -margin/2, Config.Window.height+margin);
+        walls["tRod"] = new Rod("TopWall", false, -margin/2, -winMargin, Config.Window.width+margin);
+        walls["bRod"] = new Rod("BottomWall", false, -margin/2,Config.Window.height+Config.Rod.dim+winMargin , Config.Window.width+margin);
+        
+        
 
-    // var time = setInterval(function(){
-    //     layout.refresh();
-    // }, 50);
+        return walls;
+    }
+    objects.addSingleItem(swing);
+    objects.addSingleItem(ball);
+    var walls = this.createWalls();
+    bRod = walls["bRod"];
+    bRod.whenCollided = function(obj){
+        obj.stop();
+    }
+        
+    objects.addItems(walls);
+
+
+
+    var engine = new Engine(swing,0,Config.Window.width);
+    var level = new Level(objects);
+    var layout = new Layout(objects);
+    var physics = new Physics(objects.items);
+
+    var time = setInterval(function(){
+        physics.move();
+        layout.refresh();
+        objects.cleanObjects(); 
+        
+
+    }, 100);
+   /* var pTime = setInterval(function(){
+        physics.move();
+    }, 500);*/
+
+    layout.draw();
 };
+
+

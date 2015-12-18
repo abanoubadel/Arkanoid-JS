@@ -42,5 +42,8 @@ var Config = {
     Swing:{
         width: 162,
         height: 25,
+    },
+    Rod:{
+        dim:1000
     }
 };

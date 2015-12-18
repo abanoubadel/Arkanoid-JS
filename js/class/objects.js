@@ -2,11 +2,36 @@ var Objects = function(){
 	this.items = [];
 	this.setItems = function(items){
 		// itemsMirror = Object.create(items)
-		for (var i = 0; i < items.length; i++) {
-			this.items.push(items.shift());
+		while(items.length > 0) {
+			this.addSingleItem(items.shift());
 		};		
 	};
-	this.addSingleItem = function(item){
-		this.items.push(item);
+	this.addItems = function(items){
+		this.setItems(items);
 	};
+
+	this.cleanObjects = function(){
+		num = 0;
+		for (var i = 0; i < this.items.length; i++) {
+			if(this.items[i].isDestroyed())
+			{
+				this.remove(i);
+				num++;
+			}
+		};
+		return num;
+	}
+
+	this.remove = function(num){
+		 this.items[num]=this.items[this.items.length-1]
+		 this.items.pop();
+	}
+	this.addSingleItem = function(item){
+		if(item instanceof Shape)
+		{
+			this.items.push(item);
+		}
+	};
+
+
 };
