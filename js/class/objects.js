@@ -2,9 +2,15 @@ var Objects = function(){
 	this.items = [];
 	this.setItems = function(items){
 		// itemsMirror = Object.create(items)
-		while(items.length > 0) {
+		/*while(items.length > 0) {
 			this.addSingleItem(items.shift());
-		};		
+		};*/
+		for (var key in items) {
+			if (items.hasOwnProperty(key)) {
+    			this.addSingleItem(items[key]);
+  			}
+		}
+		
 	};
 	this.addItems = function(items){
 		this.setItems(items);
