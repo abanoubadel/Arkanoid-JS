@@ -8,26 +8,25 @@ var Game = function() {
     this.createWalls = function(){
         var margin = 10;
         var winMargin = 0;
-        var walls = [];
-        var rRod = new Rod("rightWall", true, -winMargin, -margin/2, Config.Window.height+margin);
-        var lRod = new Rod("LeftWall", true, Config.Window.width+Config.Rod.dim+winMargin, -margin/2, Config.Window.height+margin);
-        var tRod = new Rod("TopWall", false, -margin/2, -winMargin, Config.Window.width+margin);
-        var bRod = new Rod("BottomWall", false, -margin/2,Config.Window.height+Config.Rod.dim+winMargin , Config.Window.width+margin);
+        var walls = {};
+        walls["rRod"] = new Rod("rightWall", true, -winMargin, -margin/2, Config.Window.height+margin);
+        walls["lRod"] = new Rod("LeftWall", true, Config.Window.width+Config.Rod.dim+winMargin, -margin/2, Config.Window.height+margin);
+        walls["tRod"] = new Rod("TopWall", false, -margin/2, -winMargin, Config.Window.width+margin);
+        walls["bRod"] = new Rod("BottomWall", false, -margin/2,Config.Window.height+Config.Rod.dim+winMargin , Config.Window.width+margin);
         
-        bRod.whenCollided = function(obj){
-            obj.stop();
-        }
-        walls.push(rRod);
-        walls.push(lRod);
-        walls.push(tRod);
-        walls.push(bRod);
-
+        
 
         return walls;
     }
     objects.addSingleItem(swing);
     objects.addSingleItem(ball);
-    objects.addItems(this.createWalls());
+    var walls = this.createWalls();
+    bRod = walls["bRod"];
+    bRod.whenCollided = function(obj){
+        obj.stop();
+    }
+        
+    objects.addItems(walls);
 
 
 
