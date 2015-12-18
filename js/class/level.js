@@ -20,7 +20,7 @@ var Level = function( objects ) {
             for (var j = 0; j < this.cols; j++) {
                 if (this.shape[i][j] != ' ') {
                     var block = new Block(
-                        'block-' + (i + j), // id
+                        'block-' + (i*this.cols + j), // id
                         j * (Config.Block.width + Config.Block.margin), //x axis
                         i * (Config.Block.height + Config.Block.margin), // y axis
                         'block' // class

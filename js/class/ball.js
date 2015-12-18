@@ -15,3 +15,4 @@ Ball.prototype.checkCollision = function(obj) {
     return coll;
 
 }
+

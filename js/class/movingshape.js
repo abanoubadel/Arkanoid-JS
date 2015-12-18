@@ -19,10 +19,22 @@ MovingShape.prototype.move = function(x, y) {
 
 MovingShape.prototype.revertVelocityX = function() {
     this.velocityX *= -1;
-}
+};
+
 MovingShape.prototype.revertVelocityY = function() {
     this.velocityY *= -1;
-}
+};
+
+MovingShape.prototype.stop = function() {
+    this.velocityX = 0;
+    this.velocityY = 0;
+};
+
+
+
+MovingShape.prototype.getVelocityDir = function(){
+    return [this.velocityX/Math.abs(this.velocityX),this.velocityY/Math.abs(this.velocityY)];
+};
 
 
 MovingShape.prototype.revertVelocity = function(carr) {
@@ -44,8 +56,11 @@ MovingShape.prototype.inertia = function() {
 MovingShape.prototype.setX = function(x) {
     this.move(x - this.getX(), 0);
 }
+MovingShape.prototype.setY = function(y) {
+    this.move(0,y - this.getY());
+}
 
-MovingShape.prototype.checkCollisionDims = function(obj) {
+/*MovingShape.prototype.checkCollisionDims = function(obj) {
     var center1 = this.getCenter();
     var center2 = obj.getCenter();
     var dim1 = this.getDims();
@@ -97,5 +112,5 @@ MovingShape.prototype.checkCollision = function(obj) {
     };
     return collArr;
 
-}
+}*/
 
