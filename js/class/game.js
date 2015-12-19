@@ -55,31 +55,29 @@ Box.prototype.write = function(txt) {
 
 
 
-var Game = function() {
+/*var Game = function() {
+    
     var window = new Window();
     var objects = new Objects();
-    var swing = new Swing((Config.Window.width / 2) - 50, Config.Window.height - 50);
-    var ball = new Ball((Config.Window.width / 2) - 10, Config.Window.height - 75, 20, -20);
-    
-    
-    this.createWalls = function(){
-        var margin = 10;
-        var winMargin = 0;
-        var walls = {};
-        walls["rRod"] = new Rod("rightWall", true, -winMargin, -margin/2, Config.Window.height+margin);
-        walls["lRod"] = new Rod("LeftWall", true, Config.Window.width+Config.Rod.dim+winMargin, -margin/2, Config.Window.height+margin);
-        walls["tRod"] = new Rod("TopWall", false, -margin/2, -winMargin, Config.Window.width+margin);
-        walls["bRod"] = new Rod("BottomWall", false, -margin/2,Config.Window.height+Config.Rod.dim+winMargin , Config.Window.width+margin);
-        
-        
 
-        return walls;
-    }
+    bRod = walls["bRod"];
+    
+    var swing = new Swing((Config.Window.width / 2) - 50, Config.Window.height - 50);
+    var ball = new Ball((Config.Window.width / 2) - 10, Config.Window.height - 75, 15, -15);
+    var walls = this.createWalls();
+    
     objects.addSingleItem(swing);
     objects.addSingleItem(ball);
+    objects.addItems(walls);
+    
 
-    var walls = this.createWalls();
-    bRod = walls["bRod"];
+    var engine = new Engine(swing,0,Config.Window.width);
+    var level = new Level(objects);
+    var layout = new Layout(objects);
+    var physics = new Physics(objects.items);
+    
+    
+    
     
 
     //document.body.appendChild(document.c)
@@ -101,23 +99,20 @@ var Game = function() {
     }
 
 
-    lapse = new SpeederTimer(50,1.1,0.9);
+    lapse = new SpeederTimer(30,1.5,0.7);
     swing.whenCollided = function(obj){
         lapse.incSpeed();
     }
         
-    objects.addItems(walls);
 
 
 
-    var engine = new Engine(swing,0,Config.Window.width);
-    var level = new Level(objects);
-    var layout = new Layout(objects);
-    var physics = new Physics(objects.items);
     
     var score = 0;
     var scoreBoard = new Box("scoreBoard");
 
+    
+    //the timer to refresh the game
     var movement = function(){
         physics.move();
         layout.refresh();
@@ -128,16 +123,97 @@ var Game = function() {
     };
     movement();
 
-    /*var time = setTimeout(function(){
-        movement();
-
-<<<<<<< HEAD
-    }, lapse);*/
-   /* var pTime = setInterval(function(){
-        physics.move();
-    }, 500);*/
 
     layout.draw();
+};*/
+
+var Game = function() {
+    this.setScence();
+    this.setGameEngine();
+    this.setGameCoditions();
+}
+
+Game.prototype.setGameCoditions = function(){
+    
+    var lapse = this.lapse;
+    var lifes = this.lifes;
+    var swing = this.swing;
+    lifes.whenDead = function(){
+        document.body.innerHTML ="Game over"
+    }
+
+    this.bRod.whenCollided = function(obj){
+        lifes.Die();
+        obj.setX( swing.getX()+(swing.getWidth()-obj.getWidth())/2 );
+        obj.setY( swing.getY()-obj.getHeight() );
+        lapse.reset();     
+    }
+    swing.whenCollided = function(obj){
+        lapse.incSpeed();
+    }
+
+
+
+}
+
+
+
+Game.prototype.setScence = function(){
+    var window = new Window();
+    this.objects = new Objects();
+
+    
+    this.swing = new Swing((Config.Window.width / 2) - 50, Config.Window.height - 50);
+    this.ball = new Ball((Config.Window.width / 2) - 10, Config.Window.height - 75, 15, -15);
+    var walls = this.createWalls();
+    this.bRod = walls["bRod"];
+    
+    this.objects.addSingleItem(this.swing);
+    this.objects.addSingleItem(this.ball);
+    this.objects.addItems(walls);
+
 };
+
+
+Game.prototype.setGameEngine = function(){
+
+    var objects = this.objects;
+    var engine = new Engine(this.swing,0,Config.Window.width);
+    var level = new Level(objects);
+    var layout = new Layout(objects);
+    var physics = new Physics(objects.items);
+    this.lifes = new Lives();
+    this.lapse = new SpeederTimer(30,1.5,0.7);
+    var lapse = this.lapse;
+    var score = 0;
+    var scoreBoard = new Box("scoreBoard");
+    
+    var movement = function(){
+        physics.move();
+        layout.refresh();
+        score += objects.cleanObjects();
+        scoreBoard.write(score+" points");  
+        setTimeout(function(){movement();},lapse.getTimer());    
+
+    };
+    movement();
+
+
+}
+
+Game.prototype.createWalls = function(){
+        var margin = 10;
+        var winMargin = 0;
+        var walls = {};
+        walls["rRod"] = new Rod("rightWall", true, -winMargin, -margin/2, Config.Window.height+margin);
+        walls["lRod"] = new Rod("LeftWall", true, Config.Window.width+Config.Rod.dim+winMargin, -margin/2, Config.Window.height+margin);
+        walls["tRod"] = new Rod("TopWall", false, -margin/2, -winMargin, Config.Window.width+margin);
+        walls["bRod"] = new Rod("BottomWall", false, -margin/2,Config.Window.height+Config.Rod.dim+winMargin , Config.Window.width+margin);
+        
+        
+
+        return walls;
+}
+
 
 
