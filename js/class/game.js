@@ -164,7 +164,7 @@ Game.prototype.setScence = function(){
 
     
     this.swing = new Swing((Config.Window.width / 2) - 50, Config.Window.height - 50);
-    this.ball = new Ball((Config.Window.width / 2) - 10, Config.Window.height - 75, 15, -15);
+    this.ball = new Ball((Config.Window.width / 2) - 10, Config.Window.height - 75, 5, -5);
     var walls = this.createWalls();
     this.bRod = walls["bRod"];
     
@@ -183,7 +183,7 @@ Game.prototype.setGameEngine = function(){
     var layout = new Layout(objects);
     var physics = new Physics(objects.items);
     this.lifes = new Lives();
-    this.lapse = new SpeederTimer(30,1.5,0.7);
+    this.lapse = new SpeederTimer(10,2,0.85);
     var lapse = this.lapse;
     var score = 0;
     var scoreBoard = new Box("scoreBoard");
