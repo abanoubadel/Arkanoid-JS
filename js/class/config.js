@@ -1,5 +1,5 @@
 var heart = "   ,.   :`  \n";
-heart    += "  @@@@;@@@@ \n";
+heart    += "  @@@@;@@@  \n";
 heart    += " #@@@@@@@@@ \n";
 heart    += " @@@'@@@@@@ \n";
 heart    += " ,@#.@@@@@@ \n";
@@ -12,8 +12,8 @@ heart    += "     #@`      ";
 var Config = {
     Window: {
         id: 'name',
-        width: 1000,
-        height: 500,
+        width: 900,
+        height: 600,
     },
     Level: {
     	id: 'levelShape',
@@ -35,8 +35,8 @@ var Config = {
         width: 300
     },
     Block: {
-        width: 60,
-        height: 25,
+        width: 64,
+        height: 32,
         margin: 5,
     },
     Swing:{
@@ -44,6 +44,6 @@ var Config = {
         height: 25,
     },
     Rod:{
-        dim:1000
+        dim: 21
     }
 };

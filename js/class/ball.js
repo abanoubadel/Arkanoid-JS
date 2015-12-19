@@ -1,6 +1,6 @@
 var Ball = function(x, y, vx, vy) {
     // body...
-    var width = 25;
+    var width = 22;
     var height = width;
     Shape.call(this, x, y, width, height, "Ball", "Ball");
     this.velocityX = vx;

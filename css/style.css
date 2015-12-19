@@ -1,51 +1,57 @@
+body{
+	background: #000;
+	background-image: url(../images/bg.jpg);
+}
 .position{
 	position: absolute;
 }
 #game{
 	position: relative;
-	margin: 0 auto;
-	border: 1px solid #ccc;
+	margin: auto;
+	
 }
 #levelShape{
 	position: relative;
 	margin: 0 auto;
 }
 .block{
-	background-image: url(../images/arcanoid_beveled.png);
-	transform: scale(0.75, 0.75);
+	width: 64px;
+	height: 32px;
 }
-.violet{
-	background-position: 788px 590px;
+.purple{
+	background-image: url(../images/purple_rect.png);
 }
-.orange{
-	background-position: 657px 590px;
+.grey{
+	background-image: url(../images/grey_rect.png);
 }
 .blue{
-	background-position: 512px 590px;
+	background-image: url(../images/blue_rect.png);
 }
 .red{
-	background-position: 365px 590px;
+	background-image: url(../images/red_rect.png);
 }
 .yellow{
-	background-position: 226px 590px;
+	background-image: url(../images/yellow_rect.png);
 }
 .green{
-	background-position: 84px 590px;
+	background-image: url(../images/green_rect.png);
 }
 .swing{
-	background-image: url(../images/arcanoid_beveled.png);
-	background-position: 174px 95px;
+	background-image: url(../images/swing.png);
 }
 
 .Ball{
-	border-radius: 100%;
-	background-color: black;	 
+	background-image: url(../images/ball.png);
 }
 .rod{
-	background-color: black;
-	display: none;
+	
 }
-
+#TopWall{
+	background-image: url(../images/hbor.png);
+}
+#LeftWall, #rightWall{
+	background-image: url(../images/vbor.png);
+}
 .hidden
 {
 	display: none;
