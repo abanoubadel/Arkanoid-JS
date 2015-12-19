@@ -1,9 +1,64 @@
+
+
+var Lives = function (liveNum) {
+    this.lives = 2;
+    
+    this.box = new Box("lives");
+
+    if(typeof liveNum === "number")
+    {
+        this.lives = liveNum;
+    }
+        this.box.write((this.lives+1)+"")
+}
+
+Lives.prototype.getLives = function() {
+    return this.lives;
+};
+
+Lives.prototype.isDead = function(){
+    return (this.lives <= 0)
+}
+
+Lives.prototype.Die = function(){
+
+    if(!this.isDead()){
+        this.lives--;
+        this.box.write((this.lives+1)+"")
+
+        return false;
+    }
+    this.whenDead();    
+    return true;
+}
+
+Lives.prototype.whenDead = function () {
+    // body...
+
+}
+
+var Box = function(id){
+    this.id = id;
+    this.box = document.createElement("div");
+    this.box.id = id;
+    document.body.appendChild(this.box);
+    this.box.style.fontSize = "50px";
+};
+Box.prototype.write = function(txt) {
+    document.getElementById(this.id).innerHTML = txt;
+}
+
+
+
+
+
+
+
 var Game = function() {
     var window = new Window();
     var objects = new Objects();
     var swing = new Swing((Config.Window.width / 2) - 50, Config.Window.height - 50);
-    var ball = new Ball((Config.Window.width / 2) - 20, Config.Window.height - 90, 10, 10);
-    
+    var ball = new Ball((Config.Window.width / 2) - 20, Config.Window.height - 90, 10, -10);
     
     this.createWalls = function(){
         var margin = 10;
@@ -25,15 +80,26 @@ var Game = function() {
     bRod = walls["bRod"];
     
 
-    var lives = 3;
-    var lifeBox = document.createElement('div');
-    lifeBox.id = 'life';
     //document.body.appendChild(document.c)
     
+    var lifes = new Lives();
+    
+    lifes.whenDead = function(){
+        document.body.innerHTML ="Game over"
+    }
 
     bRod.whenCollided = function(obj){
-        lives--;
-        obj.stop();
+        lifes.Die();
+        obj.setX( swing.getX()+(swing.getWidth()-obj.getWidth())/2 );
+        obj.setY( swing.getY()-obj.getHeight() );
+        lapse.reset();     
+//        obj.stop();
+    }
+
+
+    lapse = new SpeederTimer(30,2,0.95);
+    swing.whenCollided = function(obj){
+        lapse.incSpeed();
     }
         
     objects.addItems(walls);
@@ -44,20 +110,34 @@ var Game = function() {
     var level = new Level(objects);
     var layout = new Layout(objects);
     var physics = new Physics(objects.items);
+    
+    var score = 0;
+    var scoreBoard = new Box("scoreBoard");
 
-    var time = setInterval(function(){
+    var movement = function(){
         physics.move();
         layout.refresh();
-        objects.cleanObjects(); 
-        
+        score += objects.cleanObjects();
+        scoreBoard.write(score+" points");  
+        setTimeout(function(){movement();},lapse.getTimer());    
 
-    }, 100);
+    };
+    movement();
+
+    /*var time = setTimeout(function(){
+        movement();
+
+    }, lapse);*/
    /* var pTime = setInterval(function(){
         physics.move();
     }, 500);*/
 
     layout.draw();
 };
+
+
+
+
 
 
 
