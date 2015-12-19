@@ -1,7 +1,12 @@
 var Engine = function(swing, min, max) {
     this.swing = swing;
     var first_time = true;
+    var posX;
+    
     window.onkeydown = function(event) {
+        if(true){
+            return;
+        }
         var RIGHT = 39;
         var LEFT = 37;
         var step = 10;
@@ -23,7 +28,8 @@ var Engine = function(swing, min, max) {
 
 
             swing.move(step);
-        } else if (event.keyCode === LEFT) {
+        } 
+        else if (event.keyCode === LEFT) {
             if (swing.getX() <= min) {
                 swing.setX(min);
                 return;
@@ -32,6 +38,49 @@ var Engine = function(swing, min, max) {
             swing.move(-step);
         }
     }
+
+    document.addEventListener('mousemove', function (e) {
+        
+        
+        //finding if swing is out of it's domain
+        if (swing.getX() < min) {
+            swing.setX(min);
+            return;
+        }
+        if (swing.getX() + swing.getWidth() > max) {
+            swing.setX(max - swing.getWidth());
+            return;
+        }
+        
+
+        if(first_time)
+        {
+            first_time = false;
+            posX = e.pageX;
+
+        }
+        else
+        {
+            step = e.pageX-posX;
+            swing.move(e.pageX-posX);
+            posX = e.pageX;
+            if(step > 0)
+            {
+                if (swing.getX() + swing.getWidth() + step >= max) {
+                    swing.setX(max - swing.getWidth());
+                    return;
+                }
+            }
+            else
+            {
+                if (swing.getX() <= min) {
+                    swing.setX(min);
+                    return;
+                }
+            } 
+            swing.move(step);
+        }   
+        });
 
 
 }

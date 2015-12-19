@@ -59,7 +59,7 @@ var Game = function() {
     var window = new Window();
     var objects = new Objects();
     var swing = new Swing((Config.Window.width / 2) - 50, Config.Window.height - 50);
-    var ball = new Ball((Config.Window.width / 2) - 10, Config.Window.height - 75, 15, -15);
+    var ball = new Ball((Config.Window.width / 2) - 10, Config.Window.height - 75, 20, -20);
     
     
     this.createWalls = function(){
@@ -101,7 +101,7 @@ var Game = function() {
     }
 
 
-    lapse = new SpeederTimer(50,2,0.95);
+    lapse = new SpeederTimer(50,1.1,0.9);
     swing.whenCollided = function(obj){
         lapse.incSpeed();
     }

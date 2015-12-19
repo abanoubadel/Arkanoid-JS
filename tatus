@@ -1,0 +1,323 @@
+[33mcommit 3277ddbb72a8af663faf782f0782a11a192c810c[m
+Merge: 482c90c e83ed96
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Sat Dec 19 10:44:20 2015 +0200
+
+    game with better layout butv still not done
+
+[33mcommit 482c90c665d54cf9317700f421fe581967323530[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Sat Dec 19 10:24:08 2015 +0200
+
+    delever dirty game
+
+[33mcommit e83ed962d7d68c8e5c188a2f3a745df8cc13849d[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Sat Dec 19 10:22:29 2015 +0200
+
+    fixed layout
+
+[33mcommit 0e14211c9aa20a98865901e8d54d46aee694b88d[m
+Merge: 0907246 dd135e5
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Sat Dec 19 07:56:30 2015 +0200
+
+    dont know why
+
+[33mcommit 090724671b60c6c1464d17a988c6385e56192023[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Sat Dec 19 07:51:56 2015 +0200
+
+    fixed some ui
+
+[33mcommit dd135e548207ef9ed4998bab136bff88c7833897[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Fri Dec 18 22:21:04 2015 +0200
+
+    bad quality code for testing
+
+[33mcommit e2738334d443a05367750b9fae5cbfa95d8de6eb[m
+Merge: 727f239 a8b022f
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Fri Dec 18 21:05:43 2015 +0200
+
+    Merge branch 'master' of https://github.com/abanoubadel/Arkanoid-JS
+    
+    Don't know why
+
+[33mcommit 727f239e0836f84266518db1c7f6828637416508[m
+Merge: 66a00a8 bc27917
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Fri Dec 18 21:05:33 2015 +0200
+
+    don't know why
+
+[33mcommit a8b022fb48c08f93070c7b41f301ee8c8ebb9b1a[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Fri Dec 18 21:04:19 2015 +0200
+
+    get abanoub opnion
+
+[33mcommit 66a00a8638696cb96fbc655dcb77ba314753af34[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Fri Dec 18 20:54:22 2015 +0200
+
+    add comments to game class
+
+[33mcommit bc279176c37c9d173cd5996b4582fb80d6a523f8[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Fri Dec 18 17:06:06 2015 +0200
+
+    add ALmost all game without score and menu
+
+[33mcommit 16dd2d006fb234f5e4d72b5a486ac073fe2d22ec[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Thu Dec 17 19:19:52 2015 +0200
+
+    add, follow one object for physix and layout
+
+[33mcommit c756378e671aba06ea8c2aa040c578c719bd565a[m
+Merge: a0aa619 3b74091
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Thu Dec 17 18:57:46 2015 +0200
+
+    Merge branch 'master' of https://github.com/abanoubadel/Arkanoid-JS
+
+[33mcommit 3b740915a99471f941801d6f972411684bbe4acc[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Thu Dec 17 18:57:23 2015 +0200
+
+    commit getid in shape class
+
+[33mcommit a0aa61986188adeae3e77259782d0eaa34e53aef[m
+Merge: 47047fe cea7fd2
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Thu Dec 17 18:54:57 2015 +0200
+
+    Merge branch 'master' of https://github.com/abanoubadel/Arkanoid-JS
+    
+    add layout draw
+
+[33mcommit 47047fe88d2efd59b3c2a43b6e69ece82e4ee332[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Thu Dec 17 18:54:42 2015 +0200
+
+    add layout draw
+
+[33mcommit cea7fd20d999591cf78f59d8901bf874c92fc14e[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Thu Dec 17 18:23:22 2015 +0200
+
+    separate object from layout
+
+[33mcommit d6bc54ab861e9e8e873048a88548a2aca3b3b18c[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Thu Dec 17 17:47:16 2015 +0200
+
+    before you remove html creation from shape
+
+[33mcommit e6b9fba70509f1097df2d61f5ab50d920a68ed81[m
+Merge: 4cf1676 e2d2671
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Thu Dec 17 17:40:06 2015 +0200
+
+    fix conflicts
+
+[33mcommit 4cf1676a0e3f3f3ac4f477a6224e6bc95e8383ac[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Thu Dec 17 17:32:32 2015 +0200
+
+    last commit before pull
+
+[33mcommit e2d26716c0a13d5d196c6dde27b10a5abf29ff60[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Thu Dec 17 17:30:38 2015 +0200
+
+    seprate all classes in each file
+
+[33mcommit fbe4c6aae03bc4cf9acd7d19d0dcbc1fb4dcc430[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Thu Dec 17 17:17:13 2015 +0200
+
+    seprate each project
+
+[33mcommit 9b71a908a13c1bf35ac96913304954f5968a3890[m
+Merge: 8367f6b 7002319
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Thu Dec 17 13:58:29 2015 +0200
+
+    fixing conflicts in swing hopefully
+
+[33mcommit 8367f6b7de31c630ed588ef9e5d67daf8c2d06f3[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Thu Dec 17 13:54:48 2015 +0200
+
+    fix swing
+
+[33mcommit 70023193f8335fcbe795d81d5e8a51cdf9a691a8[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Thu Dec 17 13:51:30 2015 +0200
+
+    try to fix swing proplem
+
+[33mcommit 4ba6397ba0335b23d0c1b27267dcbbf9fa7228bb[m
+Merge: 51b9521 9d6a5ba
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Thu Dec 17 13:43:01 2015 +0200
+
+    fix conflict
+
+[33mcommit 51b95213b081005eeb5c1e7d6b39857c92eb93aa[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Thu Dec 17 13:27:33 2015 +0200
+
+    Add levels shape
+
+[33mcommit 9d6a5baf2153bedab96719cbe9f10867c43d010e[m
+Merge: 95a111e 7a235b9
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Thu Dec 17 13:07:58 2015 +0200
+
+    Merge branch 'master' of https://github.com/abanoubadel/Arkanoid-JS
+
+[33mcommit 95a111ea9788e51f53a74d6b9fd10b3b06b2a4be[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Thu Dec 17 12:21:49 2015 +0200
+
+    swing not working
+
+[33mcommit 7a235b9c430e75fd8e001aebf98d3e9f3df8fd25[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Thu Dec 17 08:58:32 2015 +0200
+
+    add test file
+
+[33mcommit 28521cc4df5730b652f57018523ae20488846654[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Thu Dec 17 06:56:21 2015 +0200
+
+    basic testing for physics engine
+
+[33mcommit f9f4dbb49817c04832cd633dae47113c0585db12[m
+Merge: 22f7978 72c344b
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Wed Dec 16 19:19:31 2015 +0200
+
+    last wednes
+
+[33mcommit 72c344b442e1641c7a0ca5a30e6112f4829b7af9[m
+Merge: 22b1028 40eae37
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Wed Dec 16 19:15:00 2015 +0200
+
+    edit before leaving ITI
+
+[33mcommit 22f797882129e3a2715c5dcb313ee6042ea8ccff[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Wed Dec 16 19:10:27 2015 +0200
+
+    physics without physics
+
+[33mcommit 22b1028587d4784e2c8c5479398754dd47e6df3d[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Wed Dec 16 19:10:05 2015 +0200
+
+    Added Blocks, Levels
+
+[33mcommit d7e2ba4396169e5994e509824b7c37edc05b716c[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Wed Dec 16 17:42:48 2015 +0200
+
+    add physics without implementation
+
+[33mcommit 40eae378697cfd10f7c957d5bbd7d21167cb26a8[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Wed Dec 16 17:06:42 2015 +0200
+
+    add basic engine
+
+[33mcommit e5877c0a1d935fc0acff73e4dc64b10111657a9b[m
+Author: abanoubadel <abanoub.adelb@gmail.com>
+Date:   Wed Dec 16 14:57:01 2015 +0200
+
+    not needed
+
+[33mcommit 904cf1d269cb2309cb6430ec83e6b16caa38bdb8[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Wed Dec 16 14:54:50 2015 +0200
+
+    edit readme
+
+[33mcommit fa2f88fb51b75d7f35e85028f9f4d7c15d163019[m
+Author: abanoubadel <abanoub.adelb@gmail.com>
+Date:   Wed Dec 16 14:49:04 2015 +0200
+
+    not needed
+
+[33mcommit 1db59dea1945fe85c66092a9c794cca1e3ffc03c[m
+Merge: a8250b8 744967f
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Wed Dec 16 14:47:13 2015 +0200
+
+    remove conflict
+
+[33mcommit a8250b89f3c60bace2c3856cdd983e2a4ceb20d5[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Wed Dec 16 14:44:09 2015 +0200
+
+    edit files
+
+[33mcommit 744967f226c81484c6e3458643e6225ef7b56788[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Wed Dec 16 14:40:21 2015 +0200
+
+    add engine file and add moving Shape
+
+[33mcommit 2e9b32d8240ace479e9cd912139bf014d13951ac[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Wed Dec 16 14:11:31 2015 +0200
+
+    Delete unused files
+
+[33mcommit c07ed55d61d4a4fd38e3930f92130a98ce880ce4[m
+Merge: a758876 ba59ac6
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Wed Dec 16 14:06:54 2015 +0200
+
+    Merge branch 'master' of https://github.com/abanoubadel/Arkanoid-JS
+
+[33mcommit a7588763d64fa6d702352f0b4ff4061ca4a515d9[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Wed Dec 16 13:59:25 2015 +0200
+
+    add basic files
+
+[33mcommit ba59ac6a3e9bd7c66e06bbb4c7b3c781527a9cad[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Wed Dec 16 13:52:59 2015 +0200
+
+    add basic shape
+
+[33mcommit 5990d51bac42a90cf5eae123aed36888796c69f9[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Wed Dec 16 13:47:17 2015 +0200
+
+    make shapes basically
+
+[33mcommit 1e2dc0b6f968d3ecad438a2261b01ce9dc2485b0[m
+Author: hiddenWarrior <manfscience@gmail.com>
+Date:   Wed Dec 16 09:07:08 2015 +0200
+
+    add basic files
+
+[33mcommit 80d13a6e198a0ad36cb59a8b3948bef6c1ef6e4c[m
+Author: Abanoub <abanoub@localhost.localdomain>
+Date:   Wed Dec 16 08:43:01 2015 +0200
+
+    Add basic files
+
+[33mcommit 2798ff9235f53fc138c48e1bfc8e1cdb43aec492[m
+Author: abanoubadel <abanoub.adelb@gmail.com>
+Date:   Tue Dec 15 14:40:04 2015 +0200
+
+    Initial commit
