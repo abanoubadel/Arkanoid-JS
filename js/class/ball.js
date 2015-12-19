@@ -3,7 +3,7 @@ var Ball = function(x, y, vx, vy) {
     this.accX = 1.5;
     this.accY = 1.2;
 
-    var width = 25;
+    var width = 22;
     var height = width;
     Shape.call(this, x, y, width, height, "Ball", "Ball");
     this.velocityX = vx;

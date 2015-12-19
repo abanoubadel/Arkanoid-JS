@@ -36,13 +36,14 @@ Lives.prototype.whenDead = function () {
     // body...
 
 }
-
+document.body.style.color = "white";
 var Box = function(id){
     this.id = id;
     this.box = document.createElement("div");
     this.box.id = id;
     document.body.appendChild(this.box);
     this.box.style.fontSize = "50px";
+    this.box.style.color = "white";
 };
 Box.prototype.write = function(txt) {
     document.getElementById(this.id).innerHTML = txt;
@@ -58,7 +59,8 @@ var Game = function() {
     var window = new Window();
     var objects = new Objects();
     var swing = new Swing((Config.Window.width / 2) - 50, Config.Window.height - 50);
-    var ball = new Ball((Config.Window.width / 2) - 20, Config.Window.height - 90, 10, -10);
+    var ball = new Ball((Config.Window.width / 2) - 10, Config.Window.height - 75, 15, -15);
+    
     
     this.createWalls = function(){
         var margin = 10;
@@ -84,6 +86,8 @@ var Game = function() {
     
     var lifes = new Lives();
     
+
+    //when the Game over
     lifes.whenDead = function(){
         document.body.innerHTML ="Game over"
     }
@@ -97,7 +101,7 @@ var Game = function() {
     }
 
 
-    lapse = new SpeederTimer(30,2,0.95);
+    lapse = new SpeederTimer(50,2,0.95);
     swing.whenCollided = function(obj){
         lapse.incSpeed();
     }
@@ -127,6 +131,7 @@ var Game = function() {
     /*var time = setTimeout(function(){
         movement();
 
+<<<<<<< HEAD
     }, lapse);*/
    /* var pTime = setInterval(function(){
         physics.move();
@@ -134,10 +139,5 @@ var Game = function() {
 
     layout.draw();
 };
-
-
-
-
-
 
 

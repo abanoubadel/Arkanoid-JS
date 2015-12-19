@@ -1,13 +1,11 @@
-
-
 var Swing = function(x, y) {
     //calling constructors
     this.accX = 1;
     this.accY = 1;
     this.velocityX = 0;
     this.velocityY = 0;
-    var length = 100;
-    var width = 30;
+    var length = 104;
+    var width = 24;
     Shape.call(this, x, y, length, width, "swing", "swing");
 };
 
