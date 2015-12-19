@@ -12,7 +12,7 @@ heart    += "     #@`      ";
 var Config = {
     Window: {
         id: 'name',
-        width: 900,
+        width: 850,
         height: 600,
     },
     Level: {

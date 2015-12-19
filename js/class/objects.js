@@ -29,8 +29,8 @@ var Objects = function(){
 	}
 
 	this.remove = function(num){
-		 this.items[num]=this.items[this.items.length-1]
-		 this.items.pop();
+		this.items[num]=this.items[this.items.length-1]
+		this.items.pop();
 	}
 	this.addSingleItem = function(item){
 		if(item instanceof Shape)

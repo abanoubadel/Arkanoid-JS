@@ -2,7 +2,7 @@ var Game = function() {
     var window = new Window();
     var objects = new Objects();
     var swing = new Swing((Config.Window.width / 2) - 50, Config.Window.height - 50);
-    var ball = new Ball((Config.Window.width / 2) - 20, Config.Window.height - 90, 10, 10);
+    var ball = new Ball((Config.Window.width / 2) - 10, Config.Window.height - 75, 10, 10);
     
     
     this.createWalls = function(){
@@ -34,6 +34,7 @@ var Game = function() {
     bRod.whenCollided = function(obj){
         lives--;
         obj.stop();
+        clearInterval(time);
     }
         
     objects.addItems(walls);
@@ -51,7 +52,7 @@ var Game = function() {
         objects.cleanObjects(); 
         
 
-    }, 100);
+    }, 60);
    /* var pTime = setInterval(function(){
         physics.move();
     }, 500);*/

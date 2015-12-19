@@ -1,64 +1,75 @@
-body{
-	background: #000;
-	background-image: url(../images/bg.jpg);
+body {
+    background: #000;
+    background-image: url(../images/bg.jpg);
 }
-.position{
-	position: absolute;
-}
-#game{
-	position: relative;
-	margin: auto;
-	
-}
-#levelShape{
-	position: relative;
-	margin: 0 auto;
-}
-.block{
-	width: 64px;
-	height: 32px;
-}
-.purple{
-	background-image: url(../images/purple_rect.png);
-}
-.grey{
-	background-image: url(../images/grey_rect.png);
-}
-.blue{
-	background-image: url(../images/blue_rect.png);
-}
-.red{
-	background-image: url(../images/red_rect.png);
-}
-.yellow{
-	background-image: url(../images/yellow_rect.png);
-}
-.green{
-	background-image: url(../images/green_rect.png);
-}
-.swing{
-	background-image: url(../images/swing.png);
+.position {
+    position: absolute;
 }
 
-.Ball{
-	background-image: url(../images/ball.png);
-}
-.rod{
-	
-}
-#TopWall{
-	background-image: url(../images/hbor.png);
-}
-#LeftWall, #rightWall{
-	background-image: url(../images/vbor.png);
-}
-.hidden
-{
-	display: none;
-}
-.anhillated
-{
-	background-image: none;
-	background-color: red !important;
+#game {
+    position: relative;
+    margin: 0 auto;
 }
 
+#levelShape {
+    position: relative;
+    margin: 0 auto;
+}
+
+.block {
+    width: 64px;
+    height: 32px;
+}
+
+.purple {
+    background-image: url(../images/purple_rect.png);
+}
+
+.grey {
+    background-image: url(../images/grey_rect.png);
+}
+
+.blue {
+    background-image: url(../images/blue_rect.png);
+}
+
+.red {
+    background-image: url(../images/red_rect.png);
+}
+
+.yellow {
+    background-image: url(../images/yellow_rect.png);
+}
+
+.green {
+    background-image: url(../images/green_rect.png);
+}
+
+.swing {
+    background-image: url(../images/swing.png);
+}
+
+.Ball {
+    background-image: url(../images/ball.png);
+}
+#TopWall {
+    background: url(../images/hbor.png) repeat-x;
+}
+
+#LeftWall,
+#rightWall {
+    background: url(../images/vbor.png) repeat-y;
+}
+
+#BottomWall {
+    background: url(../images/brod.png) repeat-x;
+}
+
+.hidden {
+    display: none;
+}
+
+.anhillated {
+    background-image: none;
+    background-color: red !important;
+}
