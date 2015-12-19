@@ -20,9 +20,19 @@ var Game = function() {
     }
     objects.addSingleItem(swing);
     objects.addSingleItem(ball);
+
     var walls = this.createWalls();
     bRod = walls["bRod"];
+    
+
+    var lives = 3;
+    var lifeBox = document.createElement('div');
+    lifeBox.id = 'life';
+    //document.body.appendChild(document.c)
+    
+
     bRod.whenCollided = function(obj){
+        lives--;
         obj.stop();
     }
         
