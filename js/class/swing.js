@@ -2,6 +2,7 @@ var Swing = function(x, y) {
     //calling constructors
     this.accX = 1;
     this.accY = 1;
+    this.sound = "sound/swing.mp3"
     this.velocityX = 0;
     this.velocityY = 0;
     var length = 104;

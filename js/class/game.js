@@ -19,6 +19,12 @@ Lives.prototype.getLives = function() {
 Lives.prototype.isDead = function(){
     return (this.lives <= 0)
 }
+Lives.prototype.revive = function(num){
+    this.lives += num;
+}
+Lives.prototype.add = function(){
+    this.revive(1);
+}
 
 Lives.prototype.Die = function(){
 
@@ -130,10 +136,10 @@ Box.prototype.write = function(txt) {
 var Game = function() {
     this.setScence();
     this.setGameEngine();
-    this.setGameCoditions();
-}
+    this.setGameConditions();
+};
 
-Game.prototype.setGameCoditions = function(){
+Game.prototype.setGameConditions = function(){
     
     var lapse = this.lapse;
     var lifes = this.lifes;
@@ -144,12 +150,11 @@ Game.prototype.setGameCoditions = function(){
 
     this.bRod.whenCollided = function(obj){
         lifes.Die();
-        obj.setX( swing.getX()+(swing.getWidth()-obj.getWidth())/2 );
-        obj.setY( swing.getY()-obj.getHeight() );
+        obj.MoveObjectOverObject(swing);
         lapse.reset();     
     }
     swing.whenCollided = function(obj){
-        lapse.incSpeed();
+        //lapse.incSpeed();
     }
 
 
@@ -167,7 +172,7 @@ Game.prototype.setScence = function(){
     this.ball = new Ball((Config.Window.width / 2) - 10, Config.Window.height - 75, 5, -5);
     var walls = this.createWalls();
     this.bRod = walls["bRod"];
-    
+    this.bRod.sound = "sound/brod.mp3" 
     this.objects.addSingleItem(this.swing);
     this.objects.addSingleItem(this.ball);
     this.objects.addItems(walls);
@@ -178,28 +183,44 @@ Game.prototype.setScence = function(){
 Game.prototype.setGameEngine = function(){
 
     var objects = this.objects;
+    
+
     var engine = new Engine(this.swing,0,Config.Window.width);
     var level = new Level(objects);
     var layout = new Layout(objects);
     var physics = new Physics(objects.items);
     this.lifes = new Lives();
+    
     this.lapse = new SpeederTimer(10,2,0.85);
-    var lapse = this.lapse;
     var score = 0;
     var scoreBoard = new Box("scoreBoard");
+    var blocksDestroyed;
     
+
+    //defining things in the closure
+    var lifes = this.lifes;
+    var lapse = this.lapse;
+    var ball = this.ball;
+    var swing = this.swing;
+    
+
     var movement = function(){
         physics.move();
         layout.refresh();
-        score += objects.cleanObjects();
-        scoreBoard.write(score+" points");  
+        blocksDestroyed = objects.cleanObjects();
+        if(level.decreaseBlocks(blocksDestroyed)){
+            ball.MoveObjectOverObject(swing);
+        }
+        score += blocksDestroyed;
+        
+        scoreBoard.write(score + " points");  
         setTimeout(function(){movement();},lapse.getTimer());    
 
     };
     movement();
 
 
-}
+};
 
 Game.prototype.createWalls = function(){
         var margin = 10;
@@ -213,7 +234,7 @@ Game.prototype.createWalls = function(){
         
 
         return walls;
-}
+};
 
 
 

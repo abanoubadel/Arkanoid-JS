@@ -1,6 +1,7 @@
 var Block = function(id, x, y, classes, BGcolor) {
     Shape.call(this, x, y, Config.Block.width, Config.Block.height, id, classes, BGcolor);
     this.colors = ['purple', 'grey', 'blue', 'red', 'yellow', 'green'];
+    this.sound = "sound/block.mp3"
 
 
     this.setColor = function(num) {

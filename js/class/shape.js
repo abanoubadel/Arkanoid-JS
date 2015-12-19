@@ -172,6 +172,7 @@ Shape.prototype.checkCollision = function(obj) {
     obj.setX(placeX);
     if(this.isHitted(collArr))
     {
+        this.playSound();
         this.whenCollided(obj);        
     }
     return collArr;
@@ -179,9 +180,14 @@ Shape.prototype.checkCollision = function(obj) {
 }
 
 Shape.prototype.whenCollided=function(obj){
-
 }
-
+Shape.prototype.playSound = function(){
+    if(this.sound)
+    {
+        var audio = new Audio(this.sound);
+        audio.play();
+    }
+}
 
 Shape.prototype.isHitted = function(result){
 for (var i = 0; i < result.length; i++) {

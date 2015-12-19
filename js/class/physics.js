@@ -9,6 +9,8 @@ var Physics = function(objs)
 
 Physics.prototype.move= function()
 {
+	
+	//iterating overall objects
 	for(var movingObject = 0 ; movingObject<this.objects.length ; movingObject++ )
 	{
 		var obj = this.objects[movingObject];

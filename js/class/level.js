@@ -1,4 +1,5 @@
 var Level = function(objects) {
+    this.blockCount = 0;
     this.current = Config.Level.start;
     this.loadConfig = function() {
         var level = Config.Level.levels[this.current - 1];
@@ -12,6 +13,17 @@ var Level = function(objects) {
     this.prev = function() {
         this.current--;
     };
+    this.decreaseBlocks = function(num){
+        this.blockCount -= num;
+        if(this.blockCount <= 0)
+        {
+            this.next();
+            this.loadConfig();
+            this.generate();
+            return true;
+        }
+        return false;
+    }
     this.generate = function() {
         this.rows = this.shape.length;
         this.cols = this.shape[0].length;
@@ -29,6 +41,7 @@ var Level = function(objects) {
                     );
                     block.setRandomColor();
                     objects.items.push(block);
+                    this.blockCount++;
                 }
             }
         };

@@ -46,12 +46,82 @@ MovingShape.prototype.stop = function() {
 
 
 MovingShape.prototype.getVelocityDir = function(){
-    return [this.velocityX/Math.abs(this.velocityX),this.velocityY/Math.abs(this.velocityY)];
+    var arr = [];
+    if(Math.abs(this.velocityX)>0)
+    {
+        arr.push(1);
+    }
+    else
+    {
+        arr.push(this.velocityX/Math.abs(this.velocityX));   
+    }
+    
+    if(Math.abs(this.velocityY)>0)
+    {
+        arr.push(1);
+    }
+    else
+    {
+        arr.push(this.velocityY/Math.abs(this.velocityY));   
+    }
+    return arr;
+    
+};
+
+MovingShape.prototype.getVelocityangle = function(){
+    
+    if(Math.abs(this.velocityY)>0)
+    {
+        return Math.atan(Math.abs(this.velocityX)/Math.abs(this.velocityY))*180/(Math.PI);
+    }
+    return 0;
 };
 
 
+
+
+MovingShape.prototype.changeAngleOnCollision = function(carr){
+    //checking if the hit is not diagonal or there is a hit 
+    if(!( (carr[0]<=0 && carr[1] <= 0) || (carr[0] > 0 && carr[1] > 0) ))
+    {
+        var objAngle = this.getVelocityangle();
+        var refrenceAngle;
+        if(carr[0]>0)
+        {
+            refrenceAngle = 90;
+        }
+        if(carr[1]>0)
+        {
+            refrenceAngle = 0;
+        }
+        var angleChange = (refrenceAngle - objAngle)*0.1;
+        var derievedAngle = objAngle+angleChange;
+        
+        if(derievedAngle>60){
+            objAngle = 60;
+        }
+        else if(derievedAngle<30){
+            objAngle = 30;
+        }
+        else
+        {
+            objAngle = derievedAngle;   
+        }
+        this.setVelocityTheta(objAngle); 
+
+    }       
+
+};
+
+MovingShape.prototype.setVelocityTheta = function(theta){
+    angle = theta*Math.PI/180;
+    var v = this.getScalarVelocity();
+    this.velocityX = v*Math.cos(angle)*this.getVelocityDir()[0];
+    this.velocityY = v*Math.sin(angle)*this.getVelocityDir()[1];
+
+};
+
 MovingShape.prototype.revertVelocity = function(carr) {
-    var vector1 = this.getScalarVelocity();
     if (carr[0] > 0) {
         this.revertVelocityX();
     }
@@ -59,7 +129,13 @@ MovingShape.prototype.revertVelocity = function(carr) {
         this.revertVelocityY();
 
     };
-    var vector2 = this.getScalarVelocity();
+    //this.changeAngleOnCollision(carr);
+
+
+
+
+
+   
     /*if(vector2 != 0)
     {
         this.velocityX  = Math.ceil((this.velocityX*vector1)/vector2);
@@ -67,22 +143,29 @@ MovingShape.prototype.revertVelocity = function(carr) {
     }*/
 }
 
+MovingShape.prototype.MoveObjectOverObject = function(obj) {
+        this.setX( obj.getX()+(obj.getWidth()-this.getWidth())/2 );
+        this.setY( obj.getY()-this.getHeight() );
+
+}
+
+
 MovingShape.prototype.getScalarVelocity = function() {
     return Math.sqrt(this.velocityX*this.velocityX + this.velocityY*this.velocityY);
-}
+};
 
 
 MovingShape.prototype.inertia = function() {
     this.move(this.velocityX, this.velocityY);
     //MovingShape.prototype.move.call(this,this.velocityX,this.velocityY);	
-}
+};
 
 MovingShape.prototype.setX = function(x) {
     this.move(x - this.getX(), 0);
-}
+};
 MovingShape.prototype.setY = function(y) {
     this.move(0,y - this.getY());
-}
+};
 
 /*MovingShape.prototype.checkCollisionDims = function(obj) {
     var center1 = this.getCenter();

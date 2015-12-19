@@ -1,6 +1,8 @@
 var Rod = function(id, isVertical, x, y, length) {
     var height;
     var width;
+    this.sound = "sound/rod.mp3"
+
     var thin = Config.Rod.dim;
     if (isVertical) {
         height = length;
