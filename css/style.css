@@ -73,3 +73,38 @@ body {
     background-image: none;
     background-color: red !important;
 }
+#lives{
+	position: absolute;
+	top: 20px;
+	left: 70px;
+}
+#lives ul{
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+.heart{
+	background: url(../images/heart.png);
+	width: 24px;
+	height: 24px;
+	list-style: none;
+	display: inline-block;
+	margin: 0 3px;
+}
+#scoreBoard{
+	position: absolute;
+	top: 60px;
+	left: 65px;
+	color: #FFEE00;
+	font-weight: bold;
+	background-color: #000;
+	border: 2px solid #fff;
+	padding: 10px 0;
+	width: 100px;
+	text-align: center;
+	font-size: 20px;
+}
+
+
+
+

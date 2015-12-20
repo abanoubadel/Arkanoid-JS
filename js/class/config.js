@@ -9,6 +9,24 @@ heart    += "   ,@+ @@   \n";
 heart    += "    ;@+@    \n";
 heart    += "     #@`      ";
 
+var circle = "   @@@@@   \n";
+circle    += "  @@@@@@@  \n";
+circle    += "  @@   @@  \n";
+circle    += "  @@   @@  \n";
+circle    += "  @@   @@  \n";
+circle    += "  @@   @@  \n";
+circle    += "  @@@@@@@  \n";
+circle    += "   @@@@@     ";
+
+var triangle = "             \n";    
+triangle    += "      @      \n";
+triangle    += "     @@@     \n";
+triangle    += "    @@@@@    \n";
+triangle    += "   @@@@@@@   \n";
+triangle    += "  @@@@@@@@@  \n";
+triangle    += " @@@@@@@@@@@   ";
+
+
 var Config = {
     Window: {
         id: 'name',
@@ -21,11 +39,11 @@ var Config = {
         levels: [{
             time: 5, // in mints
             difficulty: 0, //
-            shape: heart,
+            shape: triangle,
         }, {
             time: 3, // in mints
             difficulty: 1, //
-            shape: heart,
+            shape: circle,
         }, {
             time: 1, // in mints
             difficulty: 2, //
