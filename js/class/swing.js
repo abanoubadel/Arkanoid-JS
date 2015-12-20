@@ -17,7 +17,7 @@ Swing.prototype.constructor = Swing;
 Swing.prototype.move = function(x) {
     MovingShape.prototype.move.call(this, x, 0);
 };
-
+//for making scheduler
 Swing.prototype.checkCollision = function(obj) {
 	var result = Shape.prototype.checkCollision.call(this,obj);
 	var oCX = obj.getCenter()[0];

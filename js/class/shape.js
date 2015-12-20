@@ -160,14 +160,6 @@ Shape.prototype.checkCollision = function(obj) {
     }
     
 
-    /*if(collArr[1]>this.width/2)
-    {
-        place = this.getY();
-    }
-    else
-    {
-        place = this.getY();
-    }*/
     obj.setY(placeY);
     obj.setX(placeX);
     if(this.isHitted(collArr))
@@ -200,22 +192,3 @@ for (var i = 0; i < result.length; i++) {
 return false;
 
 }
-
-
-
-/*function main(){
-	var s = new Swing(10,10);
-	var m = new MovingShape(10,12,100,100,"id","addedClass");
-	console.log(m.div);
-	//m.getIntoContainer(document.body);
-	//console.log(s instanceof Rod) 
-
-	//var r = new Rod("r1",true,90,90,100);
-
-};
-main();
-
-*/
-
-
-

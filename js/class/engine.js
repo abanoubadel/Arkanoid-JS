@@ -2,43 +2,8 @@ var Engine = function(swing, min, max) {
     this.swing = swing;
     var first_time = true;
     var posX;
+
     
-    window.onkeydown = function(event) {
-        if(true){
-            return;
-        }
-        var RIGHT = 39;
-        var LEFT = 37;
-        var step = 10;
-        if (swing.getX() < min) {
-            swing.setX(min);
-            return;
-        }
-        if (swing.getX() + swing.getWidth() > max) {
-            swing.setX(max - swing.getWidth());
-            return;
-        }
-        //alert(event.keyCode);
-        if (event.keyCode === RIGHT) {
-            if (swing.getX() + swing.getWidth() + step >= max) {
-                swing.setX(max - swing.getWidth());
-                return;
-            }
-
-
-
-            swing.move(step);
-        } 
-        else if (event.keyCode === LEFT) {
-            if (swing.getX() <= min) {
-                swing.setX(min);
-                return;
-            }
-
-            swing.move(-step);
-        }
-    }
-
     document.addEventListener('mousemove', function (e) {
         
         
@@ -59,8 +24,11 @@ var Engine = function(swing, min, max) {
             posX = e.pageX;
 
         }
+
         else
         {
+            
+            this.whenEngineMove();
             step = e.pageX-posX;
             swing.move(e.pageX-posX);
             posX = e.pageX;
@@ -81,6 +49,9 @@ var Engine = function(swing, min, max) {
             swing.move(step);
         }   
         });
+        this.whenEngineMove = function(){
+
+        }
 
 
 }
