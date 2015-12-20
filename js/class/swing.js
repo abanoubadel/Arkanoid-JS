@@ -1,5 +1,6 @@
 var Swing = function(x, y) {
     //calling constructors
+    this.isStopped = false;
     this.accX = 1;
     this.accY = 1;
     this.sound = "sound/swing.mp3"

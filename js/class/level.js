@@ -1,7 +1,12 @@
 var Level = function(objects) {
     this.blockCount = 0;
     this.current = Config.Level.start;
+    this.whenLevelLoaded = function(){
+
+    };
+
     this.loadConfig = function() {
+        this.whenLevelLoaded();
         var level = Config.Level.levels[this.current - 1];
         this.shape = level.shape.split("\n");
         this.time = level.time;

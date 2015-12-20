@@ -13,6 +13,9 @@ var MovingShape = function(x, y, width, height, id, addedClass) {
 
 
 
+
+
+
 MovingShape.prototype = Object.create(Shape.prototype);
 MovingShape.prototype.constructor = MovingShape;
 
@@ -149,13 +152,19 @@ MovingShape.prototype.stop = function() {
     //MovingShape.prototype.move.call(this,this.velocityX,this.velocityY);  
 };
 MovingShape.prototype.unStop = function() {
-    this.isStopped = true; 
+    this.isStopped = false; 
     //MovingShape.prototype.move.call(this,this.velocityX,this.velocityY);  
 };
 
 MovingShape.prototype.inertia = function() {
+    console.log(this.isStopped);
+
     if(!this.isStopped){
         this.move(this.velocityX, this.velocityY);
+    }
+    else
+    {
+
     }
     //MovingShape.prototype.move.call(this,this.velocityX,this.velocityY);	
 };

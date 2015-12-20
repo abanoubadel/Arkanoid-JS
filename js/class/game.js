@@ -56,9 +56,18 @@ Box.prototype.write = function(txt) {
 
 
 
+var InfoBox = function()
+{
+   Box.call(this,"info");
 
+};
+InfoBox.prototype.write = function(txt){
+    Box.prototype.write.call(this,txt);
+    setTimeout(Box.prototype.write.call(this,''),3000);
+};
 
-
+InfoBox.prototype = Object.create(Box.prototype);
+InfoBox.prototype.constructor = InfoBox;
 
 var Game = function() {
     this.setScence();
@@ -71,6 +80,8 @@ Game.prototype.setGameConditions = function(){
     var lapse = this.lapse;
     var lifes = this.lifes;
     var swing = this.swing;
+    var ball = this.ball;
+    var infoBox = this.infoBox; 
     lifes.whenDead = function(){
         document.body.innerHTML ="Game over"
     }
@@ -78,11 +89,19 @@ Game.prototype.setGameConditions = function(){
     this.bRod.whenCollided = function(obj){
         lifes.Die();
         obj.MoveObjectOverObject(swing);
+        ball.stop();
+
         lapse.reset();     
     }
     swing.whenCollided = function(obj){
         //lapse.incSpeed();
     }
+    this.level.whenLevelLoaded = function(){
+        infoBox.write("cantelever");
+    }
+
+    var engine =this.engine; 
+    engine.setEngineMove(function(){ball.unStop();})   
 
 
 
@@ -93,7 +112,7 @@ Game.prototype.setGameConditions = function(){
 Game.prototype.setScence = function(){
     var window = new Window();
     this.objects = new Objects();
-
+    this.infoBox = new InfoBox();
     
     this.swing = new Swing((Config.Window.width / 2) - 50, Config.Window.height - 50);
     this.ball = new Ball((Config.Window.width / 2) - 10, Config.Window.height - 75, 5, -5);
@@ -103,6 +122,7 @@ Game.prototype.setScence = function(){
     this.objects.addSingleItem(this.swing);
     this.objects.addSingleItem(this.ball);
     this.objects.addItems(walls);
+    this.engine = new Engine(this.swing,0,Config.Window.width);
 
 };
 
@@ -112,12 +132,11 @@ Game.prototype.setGameEngine = function(){
     var objects = this.objects;
     
 
-    var engine = new Engine(this.swing,0,Config.Window.width);
-    var level = new Level(objects);
+    this.level = new Level(objects);
     var layout = new Layout(objects);
     var physics = new Physics(objects.items);
     this.lifes = new Lives();
-    
+    var engine = this.engine;
     this.lapse = new SpeederTimer(10,2,0.85);
     var score = 0;
     var scoreBoard = new Box("scoreBoard");
@@ -129,19 +148,7 @@ Game.prototype.setGameEngine = function(){
     var lapse = this.lapse;
     var ball = this.ball;
     var swing = this.swing;
-    /window.requestAnimationFrame(function refresh(time){
-        physics.move();
-        layout.refresh();
-        blocksDestroyed = objects.cleanObjects();
-        if(level.decreaseBlocks(blocksDestroyed)){
-            ball.MoveObjectOverObject(swing);
-        }
-        score += blocksDestroyed;
-        
-        scoreBoard.write(score + " points");  
-        window.requestAnimationFrame(refresh);
-    });*/
-
+    var level = this.level;
     var movement = function(){
         physics.move();
         layout.refresh();

@@ -3,6 +3,12 @@ var Engine = function(swing, min, max) {
     var first_time = true;
     var posX;
 
+    var whenEngineMove = function(){
+
+    }
+    this.setEngineMove = function(engineMove){
+        whenEngineMove = engineMove;
+    }
     
     document.addEventListener('mousemove', function (e) {
         
@@ -28,7 +34,7 @@ var Engine = function(swing, min, max) {
         else
         {
             
-            this.whenEngineMove();
+            whenEngineMove();
             step = e.pageX-posX;
             swing.move(e.pageX-posX);
             posX = e.pageX;
@@ -49,13 +55,12 @@ var Engine = function(swing, min, max) {
             swing.move(step);
         }   
         });
-        this.whenEngineMove = function(){
-
-        }
 
 
 }
+/*Engine.prototype.whenEngineMove = function(){
 
+}*/
 
 
 
