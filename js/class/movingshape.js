@@ -125,6 +125,18 @@ MovingShape.prototype.setVelocityTheta = function(theta){
 
 };
 
+MovingShape.prototype.setVelocityAngle = function(theta){
+    angle = theta*Math.PI/180;
+    var v = this.getScalarVelocity();
+    this.velocityX = v*Math.cos(angle);
+    this.velocityY = v*Math.sin(angle)*-1;
+    console.log([this.velocityX,this.velocityY]);
+
+
+};
+
+
+
 MovingShape.prototype.revertVelocity = function(carr) {
     if (carr[0] > 0) {
         this.revertVelocityX();
@@ -155,6 +167,8 @@ MovingShape.prototype.unStop = function() {
     this.isStopped = false; 
     //MovingShape.prototype.move.call(this,this.velocityX,this.velocityY);  
 };
+
+
 
 MovingShape.prototype.inertia = function() {
     //console.log(this.isStopped);
