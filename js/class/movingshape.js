@@ -157,7 +157,7 @@ MovingShape.prototype.unStop = function() {
 };
 
 MovingShape.prototype.inertia = function() {
-    console.log(this.isStopped);
+    //console.log(this.isStopped);
 
     if(!this.isStopped){
         this.move(this.velocityX, this.velocityY);

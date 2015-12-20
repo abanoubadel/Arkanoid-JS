@@ -4,6 +4,10 @@ var Level = function(objects) {
     this.whenLevelLoaded = function(){
 
     };
+    this.addLevelLoad = function(wll){
+        this.whenLevelLoaded = wll;
+        this.whenLevelLoaded();        
+    }
 
     this.loadConfig = function() {
         this.whenLevelLoaded();

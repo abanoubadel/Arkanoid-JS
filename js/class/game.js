@@ -20,7 +20,7 @@ Lives.prototype.getLives = function() {
 };
 
 Lives.prototype.isDead = function(){
-    return (this.lives <= 0)
+    return (this.lives <= 1)
 }
 Lives.prototype.revive = function(num){
     this.lives += num;
@@ -56,7 +56,10 @@ var Box = function(id){
     // this.box.style.color = "white";
 };
 Box.prototype.write = function(txt) {
-    document.getElementById(this.id).innerHTML = txt;
+    if(document.getElementById(this.id))
+    {
+        document.getElementById(this.id).innerHTML = txt;
+    }
 }
 Box.prototype.lives = function(lives) {
     var html = '<ul>';
@@ -83,20 +86,24 @@ InfoBox.prototype = Object.create(Box.prototype);
 InfoBox.prototype.constructor = InfoBox;
 
 var Game = function() {
+    this.isFreeze = false;
+
     this.setScence();
     this.setGameEngine();
     this.setGameConditions();
 };
 
 Game.prototype.setGameConditions = function(){
-    
     var lapse = this.lapse;
     var lifes = this.lifes;
     var swing = this.swing;
     var ball = this.ball;
-    var infoBox = this.infoBox; 
+    var infoBox = this.infoBox;
+    var game = this; 
     lifes.whenDead = function(){
-        document.body.innerHTML ="Game over"
+        game.isFreeze = true;
+        document.body.innerHTML ="<div id='gamesol'>Game over</div>"
+
     }
 
     this.bRod.whenCollided = function(obj){
@@ -109,9 +116,13 @@ Game.prototype.setGameConditions = function(){
     swing.whenCollided = function(obj){
         //lapse.incSpeed();
     }
-    this.level.whenLevelLoaded = function(){
+    
+    this.level.addLevelLoad(function(){
+        infoBox.write("Level "+this.current);
+    });
+    /*this.level.whenLevelLoaded = function(){
         infoBox.write("cantelever");
-    }
+    }*/
 
     var engine =this.engine; 
     engine.setEngineMove(function(){ball.unStop();})   
@@ -125,7 +136,7 @@ Game.prototype.setGameConditions = function(){
 Game.prototype.setScence = function(){
     var window = new Window();
     this.objects = new Objects();
-    this.infoBox = new InfoBox();
+    this.infoBox = new Box("infoBox");
     
     this.swing = new Swing((Config.Window.width / 2) - 50, Config.Window.height - 50);
     this.ball = new Ball((Config.Window.width / 2) - 10, Config.Window.height - 75, 5, -5);
@@ -162,6 +173,7 @@ Game.prototype.setGameEngine = function(){
     var ball = this.ball;
     var swing = this.swing;
     var level = this.level;
+    var game = this;
     var movement = function(){
         physics.move();
         layout.refresh();
@@ -172,9 +184,10 @@ Game.prototype.setGameEngine = function(){
         }
         score += blocksDestroyed;
         
-        scoreBoard.write(score);  
-       setTimeout(function(){movement();},lapse.getTimer());    
-
+        scoreBoard.write(score);
+        if(!game.isFreeze){  
+            setTimeout(function(){movement();},lapse.getTimer());    
+        }
     };
     movement();
 
