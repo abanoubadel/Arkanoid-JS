@@ -1,5 +1,5 @@
 var Lives = function (liveNum) {
-    this.lives = 2;
+    this.lives = 3;
     
     this.box = new Box("lives");
 
@@ -7,7 +7,12 @@ var Lives = function (liveNum) {
     {
         this.lives = liveNum;
     }
-        this.box.write((this.lives+1)+"")
+    // this.box.write((this.lives+1)+"")
+    /*
+        generate lives shape 'hearts'
+        take number of lives as input
+    */
+    this.box.lives(this.lives);
 }
 
 Lives.prototype.getLives = function() {
@@ -28,7 +33,8 @@ Lives.prototype.Die = function(){
 
     if(!this.isDead()){
         this.lives--;
-        this.box.write((this.lives+1)+"")
+        // this.box.write((this.lives+1)+"")
+        this.box.lives(this.lives);
 
         return false;
     }
@@ -46,13 +52,20 @@ var Box = function(id){
     this.box = document.createElement("div");
     this.box.id = id;
     document.body.appendChild(this.box);
-    this.box.style.fontSize = "50px";
-    this.box.style.color = "white";
+    // this.box.style.fontSize = "50px";
+    // this.box.style.color = "white";
 };
 Box.prototype.write = function(txt) {
     document.getElementById(this.id).innerHTML = txt;
 }
-
+Box.prototype.lives = function(lives) {
+    var html = '<ul>';
+    for (var i = 0; i < lives; i++) {
+        html += '<li class="heart"></li>';
+    };
+    html += '</ul>';
+    document.getElementById(this.id).innerHTML = html;
+}
 
 
 
@@ -159,8 +172,8 @@ Game.prototype.setGameEngine = function(){
         }
         score += blocksDestroyed;
         
-        scoreBoard.write(score + " points");  
-        setTimeout(function(){movement();},lapse.getTimer());    
+        scoreBoard.write(score);  
+       setTimeout(function(){movement();},lapse.getTimer());    
 
     };
     movement();
