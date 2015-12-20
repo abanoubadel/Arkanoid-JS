@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+    body {
+        background-image: url("images/backgrounds.jpg");
+        background-color: #574194;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
+    
+    div.transbox p {
+        margin: 5%;
+        font-weight: bold;
+        color: #000000;
+        text-align: center;
+        font-size: 26px;
+    }
+    
+    button.one {
+        width: 350px;
+        height: 115px;
+        background-color: #d147a3;
+        border: 1px solid black;
+    }
+    
+    button.two {
+        width: 350px;
+        height: 115px;
+        background-color: #ffad33;
+        border: 1px solid black;
+    }
+    
+    button.three {
+        width: 350px;
+        height: 115px;
+        background-color: #99ff33;
+        border: 1px solid black;
+    }
+    
+    button:hover {
+        background-color: #b8b894;
+        cursor: grab;
+        border: 8px solid #99cc00;
+    }
+    
+    h1 {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+    
+    input[type="submit"] {
+        width: 350px;
+        height: 115px;
+        /* background-image: url("start.jpg"); */
+        background-color: #ff9933;
+        background-color: #ff9900;
+        //border: 1px solid black;
+        //opacity: 0.4;
+        //filter: alpha(opacity=40); /* For IE8 and earlier */
+    }
+    
+    audio {
+        display: none;
+    }
+    
+    h1 {
+        font-size: 250%;
+    }
+    </style>
+</head>
+<title>
+    Arkanoid-JS
+</title>
+
+<body>
+    <audio autoplay="true" controls loop>
+        <source src="sound/music.mp3" type="audio/mpeg">
+    </audio>
+    <div class="transbox">
+        <marquee direction="right">
+            <h1> Welcome To Game Town<h1> 
+        </marquee>
+    	<p> 
+			<button id="New game" class="one"><h1>NEW GAME</h1></button>
+            <br>
+            <br>
+            <button id="Exit game" class="three"><h1> EXIT</h1></button>
+            <br>
+            <br>
+            <br>
+        </p>
+    </div>
+</body>
+
+</html>
+<script>
+var start_game = document.getElementById("New game");
+var Exite_game = document.getElementById("Exit game");
+
+/*******************************Start Game***************************/
+start_game.addEventListener("click", function(e) {
+    location.href = 'index.html';
+});
+/******************************Exite Game***************************/
+Exite_game.addEventListener("click", function(e) {
+    window.close();
+
+});
+</script>
